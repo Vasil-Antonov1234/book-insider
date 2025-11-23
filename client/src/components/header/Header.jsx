@@ -7,6 +7,7 @@ export default function Header() {
             <div className="flex items-center">
                 <Link className="text-sm px-4 py-2 leading-none rounded-full hover:bg-gray-700" to="/">Home</Link>
                 <Link className="text-sm px-4 py-2 leading-none rounded-full hover:bg-gray-700" to="/catalog">Catalog</Link>
+                <Link className="text-sm px-4 py-2 leading-none rounded-full hover:bg-gray-700" to="/create">Create Book</Link>
                 <Link className="text-sm px-4 py-2 leading-none rounded-full hover:bg-gray-700" to="/register">Register</Link>
                 <Link className="text-sm px-4 py-2 leading-none rounded-full hover:bg-gray-700" to="/login">Login</Link>
             </div>

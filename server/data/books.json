@@ -6,6 +6,7 @@
         "author": "David Grann",
         "genre": "Adventure",
         "rating": 4.17,
+        "FirstPublished": "April 18, 2023",
         "imageUrl": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1659407155i/61714633.jpg",
         "_createdOn": 1617194370000
     },
@@ -16,6 +17,7 @@
         "author": "Stephen King",
         "genre": "Fiction",
         "rating": 4.35,
+        "FirstPublished": "November 8, 2011",
         "imageUrl": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1321200959i/12976252.jpg",
         "_createdOn": 1617194371000
     },
@@ -26,6 +28,7 @@
         "author": "Suzanne Collins",
         "genre": "Fantasy",
         "rating": 4.35,
+        "FirstPublished": "September 14, 2008",
         "imageUrl": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1586722975i/2767052.jpg",
         "_createdOn": 1617194373700
     },
@@ -36,6 +39,7 @@
         "author": "Stephen King",
         "genre": "Horror",
         "rating": 4.24,
+        "FirstPublished": "September 15, 1986",
         "imageUrl": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1334416842i/830502.jpg",
         "_createdOn": 1417191973700
     }
