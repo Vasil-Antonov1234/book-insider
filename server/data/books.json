@@ -28,5 +28,15 @@
         "rating": 4.35,
         "imageUrl": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1586722975i/2767052.jpg",
         "_createdOn": 1617194373700
+    },
+    "2d5ae478-87c7-45fa-pccz-f04ab4918749": {
+        "_id": "2d5ae478-87c7-45fa-pccz-f04ab4918749",
+        "title": "It",
+        "summary": "It is a small city, a place as hauntingly familiar as your own hometown. Only in Derry the haunting is real ...",
+        "author": "Stephen King",
+        "genre": "Horror",
+        "rating": 4.24,
+        "imageUrl": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1334416842i/830502.jpg",
+        "_createdOn": 1417191973700
     }
 }

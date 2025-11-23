@@ -11,13 +11,13 @@ export default function Home() {
        (async () => {
 
         const allBooks = Object.values(await request("/books"));
-        setBooks(allBooks);
+
+        const sortedBooks = allBooks.sort((a, b) => b._createdOn - a._createdOn).slice(0, 3);
+        setBooks(sortedBooks);
 
        })()
 
     }, [])
-
-    console.log(books);
 
     return (
         <div >
