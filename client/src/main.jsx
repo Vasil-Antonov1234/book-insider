@@ -7,11 +7,14 @@ import Background from './components/background/Background.jsx'
 
 createRoot(document.getElementById('root')).render(
     <StrictMode>
-        <BrowserRouter>
-            <div className="relative h-screen">
-                <Background />
+        <div className="relative h-screen">
+            
+            <Background />
+            
+            <BrowserRouter>
                 <App />
-            </div>
-        </BrowserRouter>
+            </BrowserRouter>
+
+        </div>
     </StrictMode>,
 )
