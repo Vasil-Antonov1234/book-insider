@@ -1,0 +1,32 @@
+{
+    "2d5ae478-87c7-45fa-acf9-f04aa4724421": {
+        "_id": "2d5ae478-87c7-45fa-acf9-f04aa4724421",
+        "title": "The Wager: A Tale of Shipwreck, Mutiny and Murder",
+        "summary": "From the #1 New York Times bestselling author of Killers of the Flower Moon, a page-turning story of shipwreck, survival, and savagery, culminating in a court martial that reveals a shocking truth.",
+        "author": "David Grann",
+        "genre": "Adventure",
+        "rating": 4.17,
+        "imageUrl": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1659407155i/61714633.jpg",
+        "_createdOn": 1617194370000
+    },
+    "2d5ae478-87c7-45fa-acf9-f04aa4724434": {
+        "_id": "2d5ae478-87c7-45fa-acf9-f04aa4724434",
+        "title": "22/11/'63",
+        "summary": "Jake Epping ha trentacinque anni, è professore di inglese al liceo di Lisbon Falls, nel Maine, e arrotonda lo stipendio insegnando anche alla scuola serale. Vive solo, ma ha parecchi amici sui quali contare, e il migliore è Al, che gestisce la tavola calda.",
+        "author": "Stephen King",
+        "genre": "Fiction",
+        "rating": 4.35,
+        "imageUrl": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1321200959i/12976252.jpg",
+        "_createdOn": 1617194371000
+    },
+    "2d5ae478-87c7-45fa-acf9-f04ab4918749": {
+        "_id": "2d5ae478-87c7-45fa-acf9-f04ab4918749",
+        "title": "The Hunger Games",
+        "summary": "Winning means fame and fortune. Losing means certain death. The Hunger Games have begun. . . .",
+        "author": "Suzanne Collins",
+        "genre": "Fantasy",
+        "rating": 4.35,
+        "imageUrl": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1586722975i/2767052.jpg",
+        "_createdOn": 1617194373700
+    }
+}
