@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import request from "../../utils/request.js";
 
 export default function Details() {
@@ -16,6 +16,23 @@ export default function Details() {
         })()
 
     }, [bookId])
+
+    const navigate = useNavigate();
+
+    async function deleteBookHandler() {
+        const isConfirm = confirm(`Are you sure you want to delete ${book.title} from the collection?`);
+
+        if (isConfirm) {
+
+            try {
+                await request(`/books/${book._id}`, "DELETE");
+
+                navigate("/catalog");
+            } catch (error) {
+                alert(error.message);
+            };
+        };
+    }
 
     return (
         <section className="bg-[url('/images/details.jpg')] bg-cover bg-center flex items-center justify-center min-h-screen">
@@ -38,7 +55,7 @@ export default function Details() {
                         <button className="block w-full bg-[#ccac68] hover:bg-[#db9e1a] text-white text-2xl font-bold py-2 px-4 rounded-lg">
                             Edit
                         </button>
-                        <button className="block w-full bg-[#ccac68] hover:bg-[red] text-white text-2xl font-bold py-2 px-4 rounded-lg">
+                        <button onClick={deleteBookHandler} className="block w-full bg-[#ccac68] hover:bg-[red] text-white text-2xl font-bold py-2 px-4 rounded-lg">
                             Delete
                         </button>
                     </div>
