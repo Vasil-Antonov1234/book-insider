@@ -5,6 +5,7 @@ import Header from "./components/header/Header.jsx"
 import Register from "./components/register/Register.jsx"
 import Catalog from "./components/catalog/Catalog.jsx"
 import Create from "./components/create/Create.jsx"
+import Details from "./components/details/Ditails.jsx"
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/catalog" element={<Catalog />} />
                 <Route path="/create" element={<Create />} />
+                <Route path="/catalog/:bookId/details" element={<Details />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
             </Routes>

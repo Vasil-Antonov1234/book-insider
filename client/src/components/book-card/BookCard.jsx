@@ -27,7 +27,7 @@ export default function BookCard({
                         </div>
                         <div className="flex justify-between items-center mt-auto">
                             <Link
-                                to="/details" className="px-4 py-2 bg-white text-gray-900 rounded-lg font-semibold hover:bg-[#312d3b] hover:text-white transition-colors"
+                                to={`/catalog/${book._id}/details`} className="px-4 py-2 bg-white text-gray-900 rounded-lg font-semibold hover:bg-[#312d3b] hover:text-white transition-colors"
                             >See more
                             </Link>
                         </div>
