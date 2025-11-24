@@ -1,6 +1,7 @@
 import { useState } from "react";
 import request from "../../utils/request.js";
 import handleNewBookData from "../../utils/handleNewBookData.js";
+import { useNavigate } from "react-router";
 
 const initialValues = {
     title: "",
@@ -23,11 +24,20 @@ export default function Create() {
 
     }
 
+    const navigate = useNavigate();
+
     async function createBookHandler() {
-        
-        const body = handleNewBookData(values);
-        
-        await request("/books", "POST", body);
+
+        try {
+            const body = handleNewBookData(values);
+
+            await request("/books", "POST", body);
+            navigate("/catalog")
+        } catch (error) {
+            alert(error.message)
+        }
+
+
     };
 
     return (
