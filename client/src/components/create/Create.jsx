@@ -1,5 +1,6 @@
 import { useState } from "react";
 import request from "../../utils/request.js";
+import handleNewBookData from "../../utils/handleNewBookData.js";
 
 const initialValues = {
     title: "",
@@ -7,7 +8,8 @@ const initialValues = {
     imageUrl: "",
     genre: "",
     firstPublished: "",
-    summary: ""
+    summary: "",
+    rating: 0
 }
 
 export default function Create() {
@@ -22,7 +24,10 @@ export default function Create() {
     }
 
     async function createBookHandler() {
-        await request("/books", "POST", values);
+        
+        const body = handleNewBookData(values);
+        
+        await request("/books", "POST", body);
     };
 
     return (

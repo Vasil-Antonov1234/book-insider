@@ -1,13 +1,11 @@
-import handleNewBookData from "./handleNewBookData.js";
-
 const BASE_URL = "http://localhost:3030/jsonstore";
 
-export default async function request(url, method = "GET", data) {
+export default async function request(url, method = "GET", body) {
 
     const options = { method: method }
 
-    if (data) {
-        const body = handleNewBookData(data);
+    if (body) {
+        // const body = handleNewBookData(data);
 
         options.headers = { "content-type": "application/json" };
         options.body = JSON.stringify(body);

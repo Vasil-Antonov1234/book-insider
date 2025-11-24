@@ -42,5 +42,16 @@
         "firstPublished": "September 15, 1986",
         "imageUrl": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1334416842i/830502.jpg",
         "_createdOn": 1417191973700
+    },
+    "0f11ac43-fd5b-484b-945e-0389fc1ef7d3": {
+        "title": "The Lord of The Rings: The Fellowship of the Ring",
+        "author": "J.R.R. Tolkien",
+        "imageUrl": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1654215925i/61215351.jpg",
+        "genre": "Fantasy",
+        "firstPublished": "July 29, 1954",
+        "summary": "Sauron, the Dark Lord, has gathered to him all the Rings of Power – the means by which he intends to rule Middle-earth. All he lacks in his plans for dominion is the One Ring – the ring that rules them all – which has fallen into the hands of the hobbit, Bilbo Baggins.",
+        "rating": 4.40,
+        "_createdOn": 1764000308400,
+        "_id": "0f11ac43-fd5b-484b-945e-0389fc1ef7d3"
     }
 }
