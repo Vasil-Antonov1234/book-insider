@@ -3,6 +3,9 @@ import { Link } from "react-router";
 export default function BookCard({
     book
 }) {
+
+    let summary = book.summary.split(". ")[0];
+    summary = summary + "...";
     
     return (
         <div className="group relative h-118 w-94 [perspective:1000px] mt-8">
@@ -23,7 +26,7 @@ export default function BookCard({
                         <h3 className="text-2xl font-bold mb-4">{book.title}</h3>
                         <p className="text-2xl">{book.author}</p>
                         <div className="flex-grow">
-                            <p className="text-lg">{book.summary}</p>
+                            <p className="text-lg">{summary}</p>
                         </div>
                         <div className="flex justify-between items-center mt-auto">
                             <Link
