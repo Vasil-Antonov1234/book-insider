@@ -14,7 +14,7 @@ export default function Login() {
                         <label htmlFor="password" className="block text-gray-700 font-medium mb-2">Password</label>
                         <input type="password" id="password" name="password" className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
                     </div>
-                    <button type="submit" className="w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition duration-300">Register</button>
+                    <button type="submit" className="w-full bg-[#ccac68] hover:bg-[#db9e1a] text-white py-3 rounded-lg font-medium transition duration-300">Login</button>
                 </form>
                 <p className="mt-6 text-center text-gray-600">Don't have an account yet? <Link to="/register" className="text-blue-500 hover:underline">Register</Link></p>
             </div>

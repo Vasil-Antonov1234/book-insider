@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 export default function BookCard({
     book
 }) {
@@ -24,10 +26,10 @@ export default function BookCard({
                             <p className="text-lg">{book.summary}</p>
                         </div>
                         <div className="flex justify-between items-center mt-auto">
-                            <button
-                                className="px-4 py-2 bg-white text-gray-900 rounded-lg font-semibold hover:bg-opacity-90 transition-colors"
+                            <Link
+                                to="/details" className="px-4 py-2 bg-white text-gray-900 rounded-lg font-semibold hover:bg-[#312d3b] hover:text-white transition-colors"
                             >See more
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 </div>
