@@ -7,15 +7,18 @@ export default function Home() {
     const [books, setBooks] = useState([]);
 
     useEffect(() => {
-        
-       (async () => {
 
-        const allBooks = Object.values(await request("/books"));
+        (async () => {
 
-        const sortedBooks = allBooks.sort((a, b) => b._createdOn - a._createdOn).slice(0, 3);
-        setBooks(sortedBooks);
+            try {
+                const allBooks = Object.values(await request("/books"));
 
-       })()
+                const sortedBooks = allBooks.sort((a, b) => b._createdOn - a._createdOn).slice(0, 3);
+                setBooks(sortedBooks);
+            } catch (error) {
+                alert(error.message)
+            }            
+        })()
 
     }, [])
 

@@ -10,9 +10,15 @@ export default function Details() {
     useEffect(() => {
 
         (async () => {
-            const book = await request(`/books/${bookId}`);
 
-            setBook(book);
+            try {
+                const book = await request(`/books/${bookId}`);
+
+                setBook(book);
+            } catch (error) {
+                alert(error.message)
+            }
+
         })()
 
     }, [bookId])

@@ -22,10 +22,14 @@ export default function CreateEdit() {
 
         if (bookId) {
             (async () => {
-                const book = await request(`/books/${bookId}`);
-                const convertedBook = handleNewBookData(book, book.firstPublished);
+                try {
+                    const book = await request(`/books/${bookId}`);
+                    const convertedBook = handleNewBookData(book, book.firstPublished);
 
-                setValues(convertedBook);
+                    setValues(convertedBook);
+                } catch (error) {
+                    alert(error.message)
+                }
             })()
         } else {
             setValues(initialValues)
@@ -46,8 +50,12 @@ export default function CreateEdit() {
         const body = handleNewBookData(values);
 
         if (bookId) {
-            await request(`/books/${bookId}`, "PATCH", body);
-            navigate(`/catalog/${bookId}/details`)
+            try {
+                await request(`/books/${bookId}`, "PATCH", body);
+                navigate(`/catalog/${bookId}/details`)
+            } catch (error) {
+                alert(error.message)
+            }
         } else {
             try {
                 await request("/books", "POST", body);
