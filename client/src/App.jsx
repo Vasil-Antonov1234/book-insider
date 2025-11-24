@@ -4,7 +4,7 @@ import Home from "./components/Home/Home.jsx"
 import Header from "./components/header/Header.jsx"
 import Register from "./components/register/Register.jsx"
 import Catalog from "./components/catalog/Catalog.jsx"
-import Create from "./components/create/Create.jsx"
+import CreateEdit from "./components/create-edit/CreateEdit.jsx"
 import Details from "./components/details/Ditails.jsx"
 
 function App() {
@@ -17,7 +17,8 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/catalog" element={<Catalog />} />
-                <Route path="/create" element={<Create />} />
+                <Route path="/create" element={<CreateEdit />} />
+                <Route path="/catalog/:bookId/edit" element={<CreateEdit />} />
                 <Route path="/catalog/:bookId/details" element={<Details />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />

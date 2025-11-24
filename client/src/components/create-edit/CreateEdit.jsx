@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import request from "../../utils/request.js";
 import handleNewBookData from "../../utils/handleNewBookData.js";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 const initialValues = {
     title: "",
@@ -13,37 +13,55 @@ const initialValues = {
     rating: 0
 }
 
-export default function Create() {
+export default function CreateEdit() {
     const [values, setValues] = useState(initialValues)
+
+    const bookId = useParams().bookId;
+
+    useEffect(() => {
+
+        if (bookId) {
+            (async () => {
+                const book = await request(`/books/${bookId}`);
+                const convertedBook = handleNewBookData(book, book.firstPublished);
+
+                setValues(convertedBook);
+            })()
+        } else {
+            setValues(initialValues)
+        }
+
+    }, [bookId])
 
     function changeHandler(event) {
         setValues(state => ({
             ...state,
             [event.target.name]: event.target.value
         }))
-
     }
 
     const navigate = useNavigate();
 
     async function createBookHandler() {
+        const body = handleNewBookData(values);
 
-        try {
-            const body = handleNewBookData(values);
-
-            await request("/books", "POST", body);
-            navigate("/catalog")
-        } catch (error) {
-            alert(error.message)
+        if (bookId) {
+            await request(`/books/${bookId}`, "PATCH", body);
+            navigate(`/catalog/${bookId}/details`)
+        } else {
+            try {
+                await request("/books", "POST", body);
+                navigate("/catalog")
+            } catch (error) {
+                alert(error.message)
+            }
         }
-
-
     };
 
     return (
         <div className="container mx-auto p-4">
             {/* Page Title */}
-            <h1 className="text-3xl font-bold text-[black] mb-6 flex items-center justify-center font-serif text-5xl">Create Book</h1>
+            <h1 className="text-3xl font-bold text-[black] mb-6 flex items-center justify-center font-serif text-5xl">{bookId ? "Edit Book" : "Create Book"}</h1>
 
             <form action={createBookHandler} className="grid grid-cols-1 gap-6">
                 {/* Title */}
@@ -90,7 +108,7 @@ export default function Create() {
                 {/* Submit Button */}
                 <div className="col-span-full mt-6 p-2">
                     <button className="block w-full bg-[#ccac68] hover:bg-[#db9e1a] text-white text-2xl font-bold py-2 px-4 rounded-lg">
-                        Create
+                        {bookId ? "Edit" : "Create"}
                     </button>
                 </div>
             </form>

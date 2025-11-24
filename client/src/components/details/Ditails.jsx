@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router";
+import { Link, useNavigate, useParams } from "react-router";
 import request from "../../utils/request.js";
 
 export default function Details() {
@@ -52,9 +52,9 @@ export default function Details() {
                         {book.rating}
                     </p>
                     <div className="mt-auto flex gap-2">
-                        <button className="block w-full bg-[#ccac68] hover:bg-[#db9e1a] text-white text-2xl font-bold py-2 px-4 rounded-lg">
+                        <Link to={`/catalog/${book._id}/edit`} className="block w-full bg-[#ccac68] hover:bg-[#db9e1a] text-white text-2xl font-bold py-2 px-4 rounded-lg">
                             Edit
-                        </button>
+                        </Link>
                         <button onClick={deleteBookHandler} className="block w-full bg-[#ccac68] hover:bg-[red] text-white text-2xl font-bold py-2 px-4 rounded-lg">
                             Delete
                         </button>

@@ -1,20 +1,52 @@
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 
-export default function handleNewBookData(book) {
-    const date = new Date(book.firstPublished);
+export default function handleNewBookData(book, value) {
 
-    const month = date.getMonth();
-    const day = date.getDate();
-    const year = date.getFullYear();
+    if (!value) {
+        const date = new Date(book.firstPublished);
 
-    const convertedDate = `${months[month]} ${day}, ${year}`;
+        const month = date.getMonth();
+        const day = date.getDate();
+        const year = date.getFullYear();
 
-    book = {
-        ...book,
-        firstPublished: convertedDate,
-        _createdOn: Date.now()
+        const convertedDate = `${months[month]} ${day}, ${year}`;
+
+        if (book._createdOn) {
+            return {
+                ...book,
+                firstPublished: convertedDate,
+            }
+        }
+
+        return {
+            ...book,
+            firstPublished: convertedDate,
+            _createdOn: Date.now()
+        }
     }
 
-    return book;
+    const values = value.replace(",", "");
+    let month = months.indexOf(values.split(" ")[0]);
+    month = String(month);
+
+    if (month.length === 1) {
+        month = `0${month}`;
+    };
+
+    let day = values.split(" ")[1];
+
+    if (day.length === 1) {
+        day = `0${day}`;
+    };
+
+    const year = values.split(" ")[2];
+
+    const date = `${year}-${month}-${day}`
+
+    return {
+        ...book,
+        firstPublished: date,
+    }
+
 }
