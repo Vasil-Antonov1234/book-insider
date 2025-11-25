@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import request from "../../utils/request.js";
 import handleNewBookData from "../../utils/handleNewBookData.js";
 import { useNavigate, useParams } from "react-router";
+// import useFetch from "../../hooks/useFetch.js";
 
 const initialValues = {
     title: "",
@@ -15,8 +16,9 @@ const initialValues = {
 
 export default function CreateEdit() {
     const [values, setValues] = useState(initialValues)
-
     const bookId = useParams().bookId;
+    // const values = useFetch(`/book${bookId}`, initialValues, handleNewBookData);
+
 
     useEffect(() => {
 

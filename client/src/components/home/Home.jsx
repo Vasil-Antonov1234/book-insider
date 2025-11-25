@@ -1,26 +1,11 @@
-import { useEffect, useState } from "react";
 import BookCard from "../book-card/BookCard.jsx";
 import Footer from "../footer/Footer.jsx";
-import request from "../../utils/request.js";
+import useFetch from "../../hooks/useFetch.js";
 
 export default function Home() {
-    const [books, setBooks] = useState([]);
-
-    useEffect(() => {
-
-        (async () => {
-
-            try {
-                const allBooks = Object.values(await request("/books"));
-
-                const sortedBooks = allBooks.sort((a, b) => b._createdOn - a._createdOn).slice(0, 3);
-                setBooks(sortedBooks);
-            } catch (error) {
-                alert(error.message)
-            }            
-        })()
-
-    }, [])
+    const books = Object.values(useFetch("/books", {}))
+        .sort((a, b) => b._createdOn - a._createdOn)
+        .slice(0, 3)
 
     return (
         <div >
