@@ -4,6 +4,7 @@ const BASE_URL = "http://localhost:3030/jsonstore";
 
 export default function useFetch(url, initialState, callback) {
     const [data, setData] = useState(initialState);
+    const [isPending, setIspending] = useState(true);
 
     useEffect(() => {
 
@@ -11,6 +12,8 @@ export default function useFetch(url, initialState, callback) {
             const response = await fetch(`${BASE_URL}${url}`);
 
             const result = await response.json();
+
+            setIspending(false);
 
             if (callback) {
                 setData(callback(result, result.firstPublished));
@@ -23,5 +26,5 @@ export default function useFetch(url, initialState, callback) {
     }, [url, callback])
 
 
-    return data;
+    return { data, isPending };
 }
