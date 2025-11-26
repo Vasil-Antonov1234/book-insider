@@ -7,21 +7,33 @@ export default function useFetch(url, initialState, callback) {
     const [isPending, setIspending] = useState(true);
 
     useEffect(() => {
+        const abordController = new AbortController();
 
         (async () => {
-            const response = await fetch(`${BASE_URL}${url}`);
+            try {
+                const response = await fetch(`${BASE_URL}${url}`, {signal: abordController.signal});
+                const result = await response.json();
 
-            const result = await response.json();
+                if (callback) {
+                    setData(callback(result, result.firstPublished));
+                } else {
+                    setData(result)
+                }
 
-            setIspending(false);
-
-            if (callback) {
-                setData(callback(result, result.firstPublished));
-            } else {
-                setData(result)
+            } catch (error) {
+                
+                if (error.name !== "AbortError") {
+                alert(error.message)
+                }
+                
+            } finally {
+                setIspending(false);
             }
-
         })()
+
+        return () => {
+            abordController.abort();
+        }
 
     }, [url, callback])
 
