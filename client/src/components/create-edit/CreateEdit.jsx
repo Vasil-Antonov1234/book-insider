@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
 import request from "../../utils/request.js";
 import handleNewBookData from "../../utils/handleNewBookData.js";
 import { useNavigate, useParams } from "react-router";
-// import useFetch from "../../hooks/useFetch.js";
+import useForm from "../../hooks/useForm.js";
 
 const initialValues = {
     title: "",
@@ -15,36 +14,8 @@ const initialValues = {
 }
 
 export default function CreateEdit() {
-    const [values, setValues] = useState(initialValues)
     const bookId = useParams().bookId;
-    // const values = useFetch(`/book${bookId}`, initialValues, handleNewBookData);
-
-
-    useEffect(() => {
-
-        if (bookId) {
-            (async () => {
-                try {
-                    const book = await request(`/books/${bookId}`);
-                    const convertedBook = handleNewBookData(book, book.firstPublished);
-
-                    setValues(convertedBook);
-                } catch (error) {
-                    alert(error.message)
-                }
-            })()
-        } else {
-            setValues(initialValues)
-        }
-
-    }, [bookId])
-
-    function changeHandler(event) {
-        setValues(state => ({
-            ...state,
-            [event.target.name]: event.target.value
-        }))
-    }
+    const { data: values, changeHandler } = useForm(initialValues, bookId)
 
     const navigate = useNavigate();
 
@@ -76,7 +47,15 @@ export default function CreateEdit() {
             <form action={createBookHandler} className="grid grid-cols-1 gap-6">
                 {/* Title */}
                 <div className="p-2">
-                    <input onChange={changeHandler} value={values.title} type="text" id="title" name="title" placeholder="Title" className="block w-full rounded-md border-gray-300 shadow-sm focus:border-[#8c0327] focus:ring-[#8c0327] focus:ring-opacity-50 p-2 bg-white" />
+                    <input 
+                        onChange={changeHandler} 
+                        value={values.title} 
+                        type="text" 
+                        id="title" 
+                        name="title" 
+                        placeholder="Title" 
+                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-[#8c0327] focus:ring-[#8c0327] focus:ring-opacity-50 p-2 bg-white" 
+                    />
                 </div>
 
 
