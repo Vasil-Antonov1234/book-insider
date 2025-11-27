@@ -16,6 +16,14 @@ export default function useForm(values, callback, bookId) {
         await callback(data, bookId)
     }
 
+    function register(name) {
+        return {
+            name,
+            value: data[name],
+            onChange: changeHandler
+        }
+    }
+
     useEffect(() => {
 
         if (bookId) {
@@ -33,5 +41,5 @@ export default function useForm(values, callback, bookId) {
 
     }, [bookId])
     
-    return { data, changeHandler, formHandler }
+    return { data, changeHandler, formHandler, register }
 }
