@@ -1,5 +1,7 @@
 import { Link } from "react-router";
 import useForm from "../../hooks/useForm.js";
+import { useContext } from "react";
+import UserContext from "../../contexts/UserContext.js";
 
 export default function Register() {
     
@@ -9,34 +11,8 @@ export default function Register() {
         rePassword: ""
     }
     
-    const {formHandler, register} = useForm(initialValues, registerHandler, "")
-
-    async function registerHandler(data) {
-        const {email, password, rePassword} = data;
-
-        if (!email || !password) {
-            return alert("Email and password are required!");
-        };
-
-        if (password !== rePassword) {
-            return alert("Passwords missmatch!");
-        };
-
-        const user = { email, password }
-
-        const response = await fetch("http://localhost:3030/users/register", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json"
-            },
-            body: JSON.stringify(user)
-        });
-
-        const result = await response.json();
-
-        console.log(result);
-        
-    };
+    const {registerHandler} = useContext(UserContext)
+    const {formHandler, register} = useForm(initialValues, registerHandler, "");
 
     return (
         <section className="bg-[url('/images/login-register.jpg')] bg-cover bg-center flex items-center justify-center min-h-screen">
