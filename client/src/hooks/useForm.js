@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import request from "../utils/request.js"
 import handleNewBookData from "../utils/handleNewBookData.js"
 
-export default function useForm(values, bookId) {
+export default function useForm(values, callback, bookId) {
     const [data, setData] = useState(values)   
 
     function changeHandler(event) {
@@ -10,6 +10,10 @@ export default function useForm(values, bookId) {
             ...state,
             [event.target.name]: event.target.value
         }))
+    }
+
+    async function formHandler() {
+        await callback(data, bookId)
     }
 
     useEffect(() => {
@@ -25,11 +29,9 @@ export default function useForm(values, bookId) {
                     alert(error.message)
                 }
             })()
-        } else {
-            setData(values)
         }
 
-    }, [bookId, values])
+    }, [bookId])
     
-    return { data, changeHandler }
+    return { data, changeHandler, formHandler }
 }

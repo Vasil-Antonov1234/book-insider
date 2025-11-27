@@ -15,11 +15,11 @@ const initialValues = {
 
 export default function CreateEdit() {
     const bookId = useParams().bookId;
-    const { data: values, changeHandler } = useForm(initialValues, bookId)
+    const { data: values, changeHandler, formHandler } = useForm(initialValues, createBookHandler, bookId)
 
     const navigate = useNavigate();
 
-    async function createBookHandler() {
+    async function createBookHandler(values, bookId) {
         const body = handleNewBookData(values);
 
         if (bookId) {
@@ -44,7 +44,7 @@ export default function CreateEdit() {
             {/* Page Title */}
             <h1 className="text-3xl font-bold text-[black] mb-6 flex items-center justify-center font-serif text-5xl">{bookId ? "Edit Book" : "Create Book"}</h1>
 
-            <form action={createBookHandler} className="grid grid-cols-1 gap-6">
+            <form action={formHandler} className="grid grid-cols-1 gap-6">
                 {/* Title */}
                 <div className="p-2">
                     <input 
