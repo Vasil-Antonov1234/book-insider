@@ -3,7 +3,7 @@ import Footer from "../footer/Footer.jsx";
 import useFetch from "../../hooks/useFetch.js";
 
 export default function Home() {
-    const { data, isPending } = (useFetch("/books", {}))
+    const { data, isPending } = (useFetch("/jsonstore/books", {}))
 
     const books = Object.values(data)
         .sort((a, b) => b._createdOn - a._createdOn)

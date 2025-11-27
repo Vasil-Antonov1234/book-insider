@@ -15,7 +15,7 @@ const initialValues = {
 
 export default function CreateEdit() {
     const bookId = useParams().bookId;
-    const { data: values, changeHandler, formHandler } = useForm(initialValues, createBookHandler, bookId)
+    const { formHandler, register } = useForm(initialValues, createBookHandler, bookId)
 
     const navigate = useNavigate();
 
@@ -47,32 +47,48 @@ export default function CreateEdit() {
             <form action={formHandler} className="grid grid-cols-1 gap-6">
                 {/* Title */}
                 <div className="p-2">
-                    <input 
-                        onChange={changeHandler} 
-                        value={values.title} 
-                        type="text" 
-                        id="title" 
-                        name="title" 
-                        placeholder="Title" 
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-[#8c0327] focus:ring-[#8c0327] focus:ring-opacity-50 p-2 bg-white" 
+                    <input
+                        {...register("title")}
+                        type="text"
+                        id="title"
+                        placeholder="Title"
+                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-[#8c0327] focus:ring-[#8c0327] focus:ring-opacity-50 p-2 bg-white"
                     />
                 </div>
 
 
                 {/* Author */}
                 <div className="p-2">
-                    <input onChange={changeHandler} value={values.author} type="text" id="author" name="author" placeholder="Author" className="block w-full rounded-md border-gray-300 shadow-sm focus:border-[#8c0327] focus:ring-[#8c0327] focus:ring-opacity-50 p-2 bg-white" />
+                    <input
+                        {...register("author")}
+                        type="text"
+                        id="author"
+                        placeholder="Author"
+                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-[#8c0327] focus:ring-[#8c0327] focus:ring-opacity-50 p-2 bg-white"
+                    />
                 </div>
 
                 {/* Image Url */}
                 <div className="p-2">
-                    <input onChange={changeHandler} value={values.imageUrl} type="text" id="imageUrl" name="imageUrl" placeholder="imageUrl" className="block w-full rounded-md border-gray-300 shadow-sm focus:border-[#8c0327] focus:ring-[#8c0327] focus:ring-opacity-50 p-2 bg-white" />
+                    <input
+                        {...register("imageUrl")}
+                        type="text"
+                        id="imageUrl"
+                        placeholder="imageUrl"
+                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-[#8c0327] focus:ring-[#8c0327] focus:ring-opacity-50 p-2 bg-white"
+                    />
                 </div>
 
                 <div className="p-2 grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Genre */}
                     <div>
-                        <input onChange={changeHandler} value={values.genre} type="text" id="genre" name="genre" placeholder="Genre" className="block w-full h-10 rounded-md border-gray-300 shadow-sm focus:border-[#8c0327] focus:ring-[#8c0327] focus:ring-opacity-50 p-2 bg-white" />
+                        <input
+                            {...register("genre")}
+                            type="text"
+                            id="genre"
+                            placeholder="Genre"
+                            className="block w-full h-10 rounded-md border-gray-300 shadow-sm focus:border-[#8c0327] focus:ring-[#8c0327] focus:ring-opacity-50 p-2 bg-white"
+                        />
                     </div>
 
                     {/* First published */}
@@ -83,14 +99,25 @@ export default function CreateEdit() {
                             </svg>
                             <span className="ml-2">First Published</span>
                         </span>
-                        <input onChange={changeHandler} value={values.firstPublished} type="date" id="first-published" name="firstPublished" className="block w-full h-7 rounded-md border-gray-300 shadow-sm focus:border-[#8c0327] focus:ring-[#8c0327] focus:ring-opacity-50 p-2 background-color: #f6f6f6;" />
+                        <input
+                            {...register("firstPublished")}
+                            type="date"
+                            id="first-published"
+                            className="block w-full h-7 rounded-md border-gray-300 shadow-sm focus:border-[#8c0327] focus:ring-[#8c0327] focus:ring-opacity-50 p-2 background-color: #f6f6f6;"
+                        />
                     </div>
                 </div>
 
                 <div className="p-2">
                     {/* Summary */}
                     <div>
-                        <textarea onChange={changeHandler} value={values.summary} id="summary" name="summary" rows="3" placeholder="Summary" className="block w-full h-48 rounded-md border-gray-300 shadow-sm focus:border-[#8c0327] focus:ring-[#8c0327] focus:ring-opacity-50 p-2 bg-white"></textarea>
+                        <textarea
+                            {...register("summary")}
+                            id="summary"
+                            rows="3"
+                            placeholder="Summary"
+                            className="block w-full h-48 rounded-md border-gray-300 shadow-sm focus:border-[#8c0327] focus:ring-[#8c0327] focus:ring-opacity-50 p-2 bg-white">
+                        </textarea>
                     </div>
                 </div>
 

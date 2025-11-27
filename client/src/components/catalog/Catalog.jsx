@@ -2,7 +2,7 @@ import BookCard from "../book-card/BookCard.jsx";
 import useFetch from "../../hooks/useFetch.js";
 
 export default function Catalog() {
-    const { data, isPending } = useFetch("/books", {});
+    const { data, isPending } = useFetch("/jsonstore/books", {});
     const books = Object.values(data);
 
     return (
