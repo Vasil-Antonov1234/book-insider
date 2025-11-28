@@ -29,16 +29,51 @@ function App() {
 
         setUser(result);
 
+        console.log(result)
+
         navigate("/");
     };
 
-    function logoutHandler() {
-        setUser(null)
+    async function loginHandler(user) {
+
+        try {
+            const response = await fetch("http://localhost:3030/users/login", {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json"
+                },
+                body: JSON.stringify(user)
+            });
+
+            const result = await response.json();
+
+            setUser(result);
+
+            navigate("/");
+        } catch (error) {
+            alert(error.message);
+        }
     }
+
+    async function logoutHandler() {
+        const accessToken = user?.accessToken;
+
+        const response = await fetch("http://localhost:3030/users/logout", {
+            method: "GET",
+            headers: {
+                "X-Authorization": accessToken
+            }
+        })
+
+        console.log(response);
+        
+        setUser(null);
+    };
 
     const userContextValues = {
         user,
         registerHandler,
+        loginHandler,
         logoutHandler,
         isAuthenticated: !!user
     }
