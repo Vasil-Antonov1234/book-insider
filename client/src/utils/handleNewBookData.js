@@ -1,10 +1,35 @@
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-
 export default function handleNewBookData(book, value) {
 
+    const date = dateHandler(book.firstPublished);
+
     if (!value) {
-        const date = new Date(book.firstPublished);
+
+        if (book._createdOn) {
+            return {
+                ...book,
+                firstPublished: date
+            }
+        }
+
+        return {
+            ...book,
+            firstPublished: date,
+            _createdOn: Date.now()
+        }
+    }
+
+    return {
+        ...book,
+        firstPublished: date,
+    }
+}
+
+function dateHandler(input) {
+
+    if (input.length === 10) {
+        const date = new Date(input);
 
         const month = date.getMonth();
         const day = date.getDate();
@@ -12,41 +37,26 @@ export default function handleNewBookData(book, value) {
 
         const convertedDate = `${months[month]} ${day}, ${year}`;
 
-        if (book._createdOn) {
-            return {
-                ...book,
-                firstPublished: convertedDate,
-            }
-        }
-
-        return {
-            ...book,
-            firstPublished: convertedDate,
-            _createdOn: Date.now()
-        }
+        return convertedDate;
     }
 
-    const values = value.replace(",", "");
-    let month = months.indexOf(values.split(" ")[0]);
+    const date = input.replace(",", "");
+    let month = months.indexOf(date.split(" ")[0]) + 1;
     month = String(month);
 
     if (month.length === 1) {
         month = `0${month}`;
     };
 
-    let day = values.split(" ")[1];
+    let day = date.split(" ")[1];
 
     if (day.length === 1) {
         day = `0${day}`;
     };
 
-    const year = values.split(" ")[2];
+    const year = date.split(" ")[2];
 
-    const date = `${year}-${month}-${day}`
+    const convertedDate = `${year}-${month}-${day}`;
 
-    return {
-        ...book,
-        firstPublished: date,
-    }
-
+    return convertedDate;
 }
