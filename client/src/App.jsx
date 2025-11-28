@@ -8,6 +8,7 @@ import CreateEdit from "./components/create-edit/CreateEdit.jsx"
 import Details from "./components/details/Ditails.jsx"
 import { useState } from "react"
 import UserContext from "./contexts/UserContext.js"
+import Logout from "./components/logout/Logout.jsx"
 
 function App() {
     const [user, setUser] = useState(null);
@@ -15,17 +16,6 @@ function App() {
     const navigate = useNavigate();
 
     async function registerHandler(user) {
-        // const { email, password } = data;
-
-        // if (!email || !password) {
-        //     return alert("Email and password are required!");
-        // };
-
-        // if (password !== rePassword) {
-        //     return alert("Passwords missmatch!");
-        // };
-
-        // const user = { email, password }
 
         const response = await fetch("http://localhost:3030/users/register", {
             method: "POST",
@@ -42,9 +32,14 @@ function App() {
         navigate("/");
     };
 
+    function logoutHandler() {
+        setUser(null)
+    }
+
     const userContextValues = {
         user,
         registerHandler,
+        logoutHandler,
         isAuthenticated: !!user
     }
 
@@ -62,6 +57,7 @@ function App() {
                     <Route path="/catalog/:bookId/details" element={<Details />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
+                    <Route path="/logout" element={<Logout />} />
                 </Routes>
 
             </UserContext.Provider>

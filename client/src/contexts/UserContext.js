@@ -9,6 +9,7 @@ const UserContext = createContext({
         accessToken: ""
     },
     registerHandler() {},
+    logoutHandler() {},
     isAuthenticated: false
 })
 
