@@ -14,18 +14,18 @@ function App() {
 
     const navigate = useNavigate();
 
-    async function registerHandler(data) {
-        const { email, password, rePassword } = data;
+    async function registerHandler(user) {
+        // const { email, password } = data;
 
-        if (!email || !password) {
-            return alert("Email and password are required!");
-        };
+        // if (!email || !password) {
+        //     return alert("Email and password are required!");
+        // };
 
-        if (password !== rePassword) {
-            return alert("Passwords missmatch!");
-        };
+        // if (password !== rePassword) {
+        //     return alert("Passwords missmatch!");
+        // };
 
-        const user = { email, password }
+        // const user = { email, password }
 
         const response = await fetch("http://localhost:3030/users/register", {
             method: "POST",
