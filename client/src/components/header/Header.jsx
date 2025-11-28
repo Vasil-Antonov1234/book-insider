@@ -10,6 +10,7 @@ export default function Header() {
                 <Link className="text-sm px-4 py-2 leading-none rounded-full hover:bg-gray-700" to="/create">Create Book</Link>
                 <Link className="text-sm px-4 py-2 leading-none rounded-full hover:bg-gray-700" to="/register">Register</Link>
                 <Link className="text-sm px-4 py-2 leading-none rounded-full hover:bg-gray-700" to="/login">Login</Link>
+                <Link className="text-sm px-4 py-2 leading-none rounded-full hover:bg-gray-700" to={"/logout"}>Logout</Link>
             </div>
         </nav>
     )
