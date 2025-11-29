@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react"
-import request from "../utils/request.js"
+// import request from "../utils/request.js"
 import handleNewBookData from "../utils/handleNewBookData.js"
+import useFetch1 from "./useFetch1.js"
 
 export default function useForm(values, callback, bookId) {
-    const [data, setData] = useState(values)   
+    const { request } = useFetch1()
+    const [data, setData] = useState(values)
 
     function changeHandler(event) {
         setData(state => ({
@@ -27,9 +29,10 @@ export default function useForm(values, callback, bookId) {
     useEffect(() => {
 
         if (bookId) {
-            (async () => {
+            (async () => {                
                 try {
-                    const book = await request(`/books/${bookId}`);
+                    const book = await request(`/data/books/${bookId}`);
+                    console.log(book)
                     const convertedBook = handleNewBookData(book, book.firstPublished);
 
                     setData(convertedBook);

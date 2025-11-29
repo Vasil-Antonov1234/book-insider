@@ -14,7 +14,7 @@ export default function Details() {
         (async () => {
 
             try {
-                const book = await request(`/jsonstore/books/${bookId}`);
+                const book = await request(`/data/books/${bookId}`);
 
                 setBook(book);
             } catch (error) {
@@ -33,7 +33,7 @@ export default function Details() {
         if (isConfirm) {
 
             try {
-                await request(`/jsonstore/books/${book._id}`, "DELETE");
+                await request(`/data/books/${book._id}`, "DELETE");
 
                 navigate("/catalog");
             } catch (error) {

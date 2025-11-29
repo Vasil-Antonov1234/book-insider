@@ -1,9 +1,12 @@
 import BookCard from "../book-card/BookCard.jsx";
-import useFetch from "../../hooks/useFetch.js";
+// import useFetch from "../../hooks/useFetch.js";
+import useFetch1 from "../../hooks/useFetch1.js";
 
 export default function Catalog() {
-    const { data, isPending } = useFetch("/jsonstore/books", {});
+    const {data, isPending} = useFetch1("/data/books");
+    // const { data, isPending } = useFetch("/jsonstore/books", {});
     const books = Object.values(data);
+    console.log(books)
 
     return (
         <div className="h-180 bg-gradient-to-r via-gray-500 mt-14 overflow-y-auto">

@@ -1,9 +1,11 @@
 import BookCard from "../book-card/BookCard.jsx";
 import Footer from "../footer/Footer.jsx";
-import useFetch from "../../hooks/useFetch.js";
+// import useFetch from "../../hooks/useFetch.js";
+import useFetch1 from "../../hooks/useFetch1.js";
 
 export default function Home() {
-    const { data, isPending } = (useFetch("/jsonstore/books", {}))
+    // const { data, isPending } = (useFetch("/jsonstore/books", {}))
+    const { data, isPending } = useFetch1("/data/books")
 
     const books = Object.values(data)
         .sort((a, b) => b._createdOn - a._createdOn)
