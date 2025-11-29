@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import useForm from "../../hooks/useForm.js";
 import { useContext } from "react";
-import UserContext from "../../contexts/UserContext.js";
+import UserContext from "../../contexts/UserContext.jsx";
 
 export default function Login() {
 
@@ -11,16 +11,16 @@ export default function Login() {
     }
 
     const {loginHandler} = useContext(UserContext);
-    const {formHandler, register} = useForm(initialValues, onSubmit, "")
+    const {formHandler, formImputRegister} = useForm(initialValues, onSubmit, "")
 
-    function onSubmit(formData) {
-        const { email, password } = formData;
+    function onSubmit(userData) {
+        const { email, password } = userData;
 
         if (!email || !password) {
             return alert("Email and password are required!");
         };
 
-        loginHandler(formData);
+        loginHandler(userData);
     };
 
     return (
@@ -31,7 +31,7 @@ export default function Login() {
                     <div className="mb-5">
                         <label htmlFor="email" className="block text-gray-700 font-medium mb-2">Email Address</label>
                         <input 
-                            {...register("email")}
+                            {...formImputRegister("email")}
                             type="email" 
                             id="email"  
                             className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" 
@@ -40,7 +40,7 @@ export default function Login() {
                     <div className="mb-5">
                         <label htmlFor="password" className="block text-gray-700 font-medium mb-2">Password</label>
                         <input 
-                        {...register("password")}
+                        {...formImputRegister("password")}
                         type="password" 
                         id="password" 
                         className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" 

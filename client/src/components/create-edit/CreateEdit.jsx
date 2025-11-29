@@ -15,7 +15,7 @@ const initialValues = {
 
 export default function CreateEdit() {
     const bookId = useParams().bookId;
-    const { formHandler, register } = useForm(initialValues, createBookHandler, bookId)
+    const { formHandler, formImputRegister} = useForm(initialValues, createBookHandler, bookId)
 
     const navigate = useNavigate();
 
@@ -48,7 +48,7 @@ export default function CreateEdit() {
                 {/* Title */}
                 <div className="p-2">
                     <input
-                        {...register("title")}
+                        {...formImputRegister("title")}
                         type="text"
                         id="title"
                         placeholder="Title"
@@ -60,7 +60,7 @@ export default function CreateEdit() {
                 {/* Author */}
                 <div className="p-2">
                     <input
-                        {...register("author")}
+                        {...formImputRegister("author")}
                         type="text"
                         id="author"
                         placeholder="Author"
@@ -71,7 +71,7 @@ export default function CreateEdit() {
                 {/* Image Url */}
                 <div className="p-2">
                     <input
-                        {...register("imageUrl")}
+                        {...formImputRegister("imageUrl")}
                         type="text"
                         id="imageUrl"
                         placeholder="imageUrl"
@@ -83,7 +83,7 @@ export default function CreateEdit() {
                     {/* Genre */}
                     <div>
                         <input
-                            {...register("genre")}
+                            {...formImputRegister("genre")}
                             type="text"
                             id="genre"
                             placeholder="Genre"
@@ -100,7 +100,7 @@ export default function CreateEdit() {
                             <span className="ml-2">First Published</span>
                         </span>
                         <input
-                            {...register("firstPublished")}
+                            {...formImputRegister("firstPublished")}
                             type="date"
                             id="first-published"
                             className="block w-full h-7 rounded-md border-gray-300 shadow-sm focus:border-[#8c0327] focus:ring-[#8c0327] focus:ring-opacity-50 p-2 background-color: #f6f6f6;"
@@ -112,7 +112,7 @@ export default function CreateEdit() {
                     {/* Summary */}
                     <div>
                         <textarea
-                            {...register("summary")}
+                            {...formImputRegister("summary")}
                             id="summary"
                             rows="3"
                             placeholder="Summary"

@@ -16,7 +16,7 @@ export default function useForm(values, callback, bookId) {
         await callback(data, bookId)
     }
 
-    function register(name) {
+    function formImputRegister(name) {
         return {
             name,
             value: data[name],
@@ -41,5 +41,5 @@ export default function useForm(values, callback, bookId) {
 
     }, [bookId])
     
-    return { data, changeHandler, formHandler, register }
+    return { data, changeHandler, formHandler, formImputRegister }
 }
