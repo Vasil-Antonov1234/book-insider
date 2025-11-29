@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router";
-import request from "../../utils/request.js";
+import useFetch1 from "../../hooks/useFetch1.js";
+// import request from "../../utils/request.js";
 
 export default function Details() {
     const [book, setBook] = useState({});
+    const { request } = useFetch1()
 
     const bookId = useParams().bookId;
 
@@ -12,7 +14,7 @@ export default function Details() {
         (async () => {
 
             try {
-                const book = await request(`/books/${bookId}`);
+                const book = await request(`/jsonstore/books/${bookId}`);
 
                 setBook(book);
             } catch (error) {
@@ -31,7 +33,7 @@ export default function Details() {
         if (isConfirm) {
 
             try {
-                await request(`/books/${book._id}`, "DELETE");
+                await request(`/jsonstore/books/${book._id}`, "DELETE");
 
                 navigate("/catalog");
             } catch (error) {

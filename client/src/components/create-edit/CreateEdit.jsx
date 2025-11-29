@@ -1,7 +1,7 @@
-import request from "../../utils/request.js";
 import handleNewBookData from "../../utils/handleNewBookData.js";
 import { useNavigate, useParams } from "react-router";
 import useForm from "../../hooks/useForm.js";
+import useFetch1 from "../../hooks/useFetch1.js";
 
 const initialValues = {
     title: "",
@@ -16,6 +16,7 @@ const initialValues = {
 export default function CreateEdit() {
     const bookId = useParams().bookId;
     const { formHandler, formImputRegister} = useForm(initialValues, createBookHandler, bookId)
+    const { request } = useFetch1()
 
     const navigate = useNavigate();
 
@@ -24,14 +25,14 @@ export default function CreateEdit() {
 
         if (bookId) {
             try {
-                await request(`/books/${bookId}`, "PATCH", body);
+                await request(`/data/books/${bookId}`, "PATCH", body);
                 navigate(`/catalog/${bookId}/details`)
             } catch (error) {
                 alert(error.message)
             }
         } else {
             try {
-                await request("/books", "POST", body);
+                await request("/data/books", "POST", body);
                 navigate("/catalog")
             } catch (error) {
                 alert(error.message)

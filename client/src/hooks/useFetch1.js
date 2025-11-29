@@ -14,19 +14,6 @@ export default function useFetch1() {
             options.headers = { "content-type": "application/json" };
             options.body = JSON.stringify(body);
 
-            // if (url === "/users/logout") {
-            //     const accessToken = body.accessToken;
-            //     options.headers = { "X-Authorization": accessToken };
-
-            //     const response = await fetch(`${BASE_URL}${url}`, options);
-
-            //     return response;
-            // }
-
-            // if (url !== "/users/logout") {
-            //     options.headers = { "content-type": "application/json" };
-            //     options.body = JSON.stringify(body);
-            // }
         }
 
         if (config.accessToken || isAuthenticated) {
