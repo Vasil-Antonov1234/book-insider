@@ -38,7 +38,7 @@ export default function useFetch1() {
 
         const response = await fetch(`${BASE_URL}${url}`, options);
 
-        if (!response.ok || response.status === "204") {
+        if (!response.ok || response.status === 204) {
             return {};
         }
 
