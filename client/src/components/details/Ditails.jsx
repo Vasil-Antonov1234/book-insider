@@ -1,29 +1,27 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router";
 import useFetch1 from "../../hooks/useFetch1.js";
-// import request from "../../utils/request.js";
 
 export default function Details() {
-    const [book, setBook] = useState({});
-    const { request } = useFetch1()
-
+    // const [book, setBook] = useState({});
     const bookId = useParams().bookId;
+    const { request, data: book } = useFetch1(`/data/books/${bookId}`, {})
+    
+    // useEffect(() => {
 
-    useEffect(() => {
+    //     (async () => {
 
-        (async () => {
+    //         try {
+    //             const book = await request(`/data/books/${bookId}`);
 
-            try {
-                const book = await request(`/data/books/${bookId}`);
+    //             setBook(book);
+    //         } catch (error) {
+    //             alert(error.message)
+    //         }
 
-                setBook(book);
-            } catch (error) {
-                alert(error.message)
-            }
+    //     })()
 
-        })()
-
-    }, [bookId])
+    // }, [bookId])
 
     const navigate = useNavigate();
 
