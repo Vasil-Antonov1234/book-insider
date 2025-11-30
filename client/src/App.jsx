@@ -5,7 +5,7 @@ import Header from "./components/header/Header.jsx"
 import Register from "./components/register/Register.jsx"
 import Catalog from "./components/catalog/Catalog.jsx"
 import CreateEdit from "./components/create-edit/CreateEdit.jsx"
-import Details from "./components/details/Ditails.jsx"
+import Details from "./components/details/Details.jsx"
 import Logout from "./components/logout/Logout.jsx"
 
 function App() {
