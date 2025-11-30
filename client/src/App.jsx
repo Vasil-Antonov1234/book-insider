@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router"
 import Login from "./components/login/Login.jsx"
-import Home from "./components/Home/Home.jsx"
+import Home from "./components/home/Home.jsx"
 import Header from "./components/header/Header.jsx"
 import Register from "./components/register/Register.jsx"
 import Catalog from "./components/catalog/Catalog.jsx"

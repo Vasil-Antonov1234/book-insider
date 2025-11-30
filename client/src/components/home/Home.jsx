@@ -5,12 +5,12 @@ import useFetch1 from "../../hooks/useFetch1.js";
 
 export default function Home() {
     // const { data, isPending } = (useFetch("/jsonstore/books", {}))
-    const { data, isPending } = useFetch1("/data/books")
+    const { data: books, isPending } = useFetch1("/data/books?sortBy=_createdOn%20desc&pageSize=3", [])
 
-    const books = Object.values(data)
-        .sort((a, b) => b._createdOn - a._createdOn)
-        .slice(0, 3)
-
+    // const books = Object.values(data)
+    //     .sort((a, b) => b._createdOn - a._createdOn)
+    //     .slice(0, 3)
+        
     return (
         <div>
             

@@ -3,28 +3,45 @@ import UserContext from "../contexts/UserContext.jsx";
 
 const BASE_URL = "http://localhost:3030";
 
-export default function useFetch1(url) {
+export default function useFetch1(url, initialState) {
     const { user, isAuthenticated } = useContext(UserContext);
     const [isPending, setIsPending] = useState(true)
-    const [data, setData] = useState({})
+    const [data, setData] = useState(initialState)
 
     useEffect(() => {
 
-        if (url) {
+            if (!url) {
+                return
+            }
+
             const abordController = new AbortController();
 
             (async () => {
-                // const books = await request(url);
-                const response = await fetch(`${BASE_URL}${url}`, { signal: abordController.signal });
-                const result = await response.json()
-                setData(result);
-                setIsPending(false)
+
+                try {
+                    // const books = await request(url);
+                    const response = await fetch(`${BASE_URL}${url}`, { signal: abordController.signal });
+
+                    if (!response.ok || response.status === 204) {
+                        setIsPending(false)
+                        return {};
+                    };
+
+                    const result = await response.json()
+                    
+                    setData(result);
+                    setIsPending(false)
+                } catch (error) {
+                    if (error.name !== "AbortError") {
+                        alert(error.message)
+                    }
+                }
             })()
 
             return () => {
                 abordController.abort();
             }
-        }
+
     }, [url])
 
     async function request(url, method = "GET", body, config = {}) {
@@ -44,22 +61,21 @@ export default function useFetch1(url) {
             }
         }
 
-        const response = await fetch(`${BASE_URL}${url}`, options);
+        try {
+            const response = await fetch(`${BASE_URL}${url}`, options);
 
-        console.log(response)
+            if (!response.ok || response.status === 204) {
+                return {};
+            }
 
+            const result = await response.json();
 
-        if (!response.ok || response.status === 204) {
-            return {};
+            setData(result);
+
+            return result;
+        } catch (error) {
+            alert(error.message)
         }
-
-        const result = await response.json();
-
-        console.log(result)
-
-        setData(result);
-
-        return result;
     }
 
     return { data, isPending, request }
