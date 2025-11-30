@@ -1,15 +1,9 @@
 import BookCard from "../book-card/BookCard.jsx";
 import Footer from "../footer/Footer.jsx";
-// import useFetch from "../../hooks/useFetch.js";
-import useFetch1 from "../../hooks/useFetch1.js";
+import useFetch from "../../hooks/useFetch.js";
 
 export default function Home() {
-    // const { data, isPending } = (useFetch("/jsonstore/books", {}))
-    const { data: books, isPending } = useFetch1("/data/books?sortBy=_createdOn%20desc&pageSize=3", [])
-
-    // const books = Object.values(data)
-    //     .sort((a, b) => b._createdOn - a._createdOn)
-    //     .slice(0, 3)
+    const { data: books, isPending } = useFetch("/data/books?sortBy=_createdOn%20desc&pageSize=3", [])
         
     return (
         <div>

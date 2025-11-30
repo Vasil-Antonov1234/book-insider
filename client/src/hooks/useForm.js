@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
 // import request from "../utils/request.js"
 import handleNewBookData from "../utils/handleNewBookData.js"
-import useFetch1 from "./useFetch1.js"
+import useFetch from "./useFetch.js"
 
 export default function useForm(values, callback, bookId) {
-    const { request } = useFetch1()
+    const { request } = useFetch()
     const [data, setData] = useState(values)
 
     function changeHandler(event) {

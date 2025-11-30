@@ -1,13 +1,13 @@
 // import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router";
-import useFetch1 from "../../hooks/useFetch1.js";
+import useFetch from "../../hooks/useFetch.js";
 import { useContext } from "react";
 import UserContext from "../../contexts/UserContext.jsx";
 
 export default function Details() {
     // const [book, setBook] = useState({});
     const { bookId } = useParams();
-    const { request, data: book } = useFetch1(`/data/books/${bookId}`, {});
+    const { request, data: book } = useFetch(`/data/books/${bookId}`, {});
     const { user } = useContext(UserContext)
     const isOwner = book._ownerId === user?._id
 

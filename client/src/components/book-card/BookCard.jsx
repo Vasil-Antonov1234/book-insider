@@ -4,7 +4,7 @@ export default function BookCard({
     book
 }) {
 
-    let summary = book.summary.split(". ")[0];
+    let summary = book?.summary.split(". ")[0];
     summary = summary + "...";
     
     return (

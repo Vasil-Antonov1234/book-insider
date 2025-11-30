@@ -1,7 +1,7 @@
 import handleNewBookData from "../../utils/handleNewBookData.js";
 import { useNavigate, useParams } from "react-router";
 import useForm from "../../hooks/useForm.js";
-import useFetch1 from "../../hooks/useFetch1.js";
+import useFetch from "../../hooks/useFetch.js";
 
 const initialValues = {
     title: "",
@@ -16,7 +16,7 @@ const initialValues = {
 export default function CreateEdit() {
     const { bookId } = useParams();
     const { formHandler, formImputRegister} = useForm(initialValues, manageBookHandler, bookId)
-    const { request } = useFetch1()
+    const { request } = useFetch()
 
     const navigate = useNavigate();
 
