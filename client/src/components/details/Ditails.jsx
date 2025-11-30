@@ -4,7 +4,7 @@ import useFetch1 from "../../hooks/useFetch1.js";
 
 export default function Details() {
     // const [book, setBook] = useState({});
-    const bookId = useParams().bookId;
+    const { bookId } = useParams();
     const { request, data: book } = useFetch1(`/data/books/${bookId}`, {})
     
     // useEffect(() => {

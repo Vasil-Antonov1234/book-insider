@@ -14,13 +14,13 @@ const initialValues = {
 }
 
 export default function CreateEdit() {
-    const bookId = useParams().bookId;
-    const { formHandler, formImputRegister} = useForm(initialValues, createBookHandler, bookId)
+    const { bookId } = useParams();
+    const { formHandler, formImputRegister} = useForm(initialValues, manageBookHandler, bookId)
     const { request } = useFetch1()
 
     const navigate = useNavigate();
 
-    async function createBookHandler(values, bookId) {
+    async function manageBookHandler(values, bookId) {
         const body = handleNewBookData(values);
 
         if (bookId) {

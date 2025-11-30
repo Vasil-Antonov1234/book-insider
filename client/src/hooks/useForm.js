@@ -32,7 +32,6 @@ export default function useForm(values, callback, bookId) {
             (async () => {                
                 try {
                     const book = await request(`/data/books/${bookId}`);
-                    console.log(book)
                     const convertedBook = handleNewBookData(book, book.firstPublished);
 
                     setData(convertedBook);
