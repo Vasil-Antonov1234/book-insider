@@ -64,12 +64,12 @@ export default function useFetch(url, initialState) {
         try {
             const response = await fetch(`${BASE_URL}${url}`, options);
 
-            if (response.status === 403) {
+            if (!response.ok) {
                 const result = await response.json();
                 throw result;
             }
 
-            if (!response.ok || response.status === 204) {
+            if (response.status === 204) {
                 return {};
             }
 

@@ -26,11 +26,17 @@ export function UserProvider({
 
     async function registerHandler(userData) {
 
-        const result = await request("/users/register", "POST", userData);
+        try {
+            const result = await request("/users/register", "POST", userData);
 
-        setUser(result);
+            setUser(result);
 
-        navigate("/");
+            navigate("/");
+        } catch (error) {
+            alert(error);
+        };
+
+
     };
 
     async function loginHandler(userData) {
@@ -51,7 +57,12 @@ export function UserProvider({
         try {
             await request("/users/logout", "GET", null, { accessToken: user.accessToken })
         } catch (error) {
-            alert(error.message)
+            
+            if (error === "Invalid access token") {
+                return
+            }
+            
+            alert(error)
         } finally {
             setUser(null);
         }
