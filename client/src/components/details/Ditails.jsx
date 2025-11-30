@@ -1,12 +1,16 @@
 // import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router";
 import useFetch1 from "../../hooks/useFetch1.js";
+import { useContext } from "react";
+import UserContext from "../../contexts/UserContext.jsx";
 
 export default function Details() {
     // const [book, setBook] = useState({});
     const { bookId } = useParams();
-    const { request, data: book } = useFetch1(`/data/books/${bookId}`, {})
-    
+    const { request, data: book } = useFetch1(`/data/books/${bookId}`, {});
+    const { user } = useContext(UserContext)
+    const isOwner = book._ownerId === user?._id
+
     // useEffect(() => {
 
     //     (async () => {
@@ -58,12 +62,14 @@ export default function Details() {
                         {book.rating}
                     </p>
                     <div className="mt-auto flex gap-2">
-                        <Link to={`/catalog/${book._id}/edit`} className="block w-full bg-[#ccac68] hover:bg-[#db9e1a] text-white text-2xl font-bold py-2 px-4 rounded-lg">
-                            Edit
-                        </Link>
-                        <button onClick={deleteBookHandler} className="block w-full bg-[#ccac68] hover:bg-[red] text-white text-2xl font-bold py-2 px-4 rounded-lg">
-                            Delete
-                        </button>
+                        {isOwner ? <>
+                            <Link to={`/catalog/${book._id}/edit`} className="block w-full bg-[#ccac68] hover:bg-[#db9e1a] text-white text-2xl font-bold py-2 px-4 rounded-lg">
+                                Edit
+                            </Link>
+                            <button onClick={deleteBookHandler} className="block w-full bg-[#ccac68] hover:bg-[red] text-white text-2xl font-bold py-2 px-4 rounded-lg">
+                                Delete
+                            </button>
+                        </> : ""}
                     </div>
                 </div>
             </div>
