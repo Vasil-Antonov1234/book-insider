@@ -3,7 +3,7 @@ import { useState } from "react";
 export default function usePersistedState(initialState, key) {
     const [user, setUser] = useState(() => {
 
-        if (localStorage.getItem("auth")) {
+        if (localStorage.getItem(key)) {
             const authUser = JSON.parse(localStorage.getItem("auth"));
 
             return authUser;
