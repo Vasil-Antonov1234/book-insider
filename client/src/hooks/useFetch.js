@@ -49,6 +49,10 @@ export default function useFetch(url, initialState) {
 
         if (body) {
 
+            // if (!config.accessToken) {
+            //     return;
+            // };
+
             options.headers = { "content-type": "application/json" };
             options.body = JSON.stringify(body);
 
