@@ -1,6 +1,7 @@
-import { createContext, useState } from "react";
+import { createContext } from "react";
 import useFetch from "../hooks/useFetch.js";
 import { useNavigate } from "react-router";
+import usePersistedState from "../hooks/usePersistedState.js";
 
 const UserContext = createContext({
     user: {
@@ -19,7 +20,7 @@ const UserContext = createContext({
 export function UserProvider({
     children
 }) {
-    const [user, setUser] = useState(null);
+    const [user, setUser] = usePersistedState(null, "auth");
     const { request } = useFetch()
 
     const navigate = useNavigate();
