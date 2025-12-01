@@ -4,6 +4,7 @@ import { useContext } from "react";
 import UserContext from "../../contexts/UserContext.jsx";
 import CreateComment from "../comments/Comments.jsx";
 import Comments from "../comments/Comments.jsx";
+import BookContext from "../../contexts/BookContext.jsx";
 
 export default function Details() {
     const { bookId } = useParams();
@@ -59,8 +60,10 @@ export default function Details() {
                     </div>
                 </div>
             </div>
-                
+
+            <BookContext.Provider value={bookId}>
                 <Comments />
+            </BookContext.Provider>
 
         </section>
     );
