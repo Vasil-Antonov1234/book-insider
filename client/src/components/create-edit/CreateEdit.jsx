@@ -2,6 +2,8 @@ import handleNewBookData from "../../utils/handleNewBookData.js";
 import { useNavigate, useParams } from "react-router";
 import useForm from "../../hooks/useForm.js";
 import useFetch from "../../hooks/useFetch.js";
+import { useContext } from "react";
+import UserContext from "../../contexts/UserContext.jsx";
 
 const initialValues = {
     title: "",
@@ -17,6 +19,7 @@ export default function CreateEdit() {
     const { bookId } = useParams();
     const { formHandler, formImputRegister} = useForm(initialValues, manageBookHandler, bookId)
     const { request } = useFetch()
+    const { logoutHandler} = useContext(UserContext)
 
     const navigate = useNavigate();
 
@@ -28,14 +31,16 @@ export default function CreateEdit() {
                 await request(`/data/books/${bookId}`, "PATCH", body);
                 navigate(`/catalog/${bookId}/details`)
             } catch (error) {
-                alert(error.message)
+                alert(error.message);
             }
         } else {
             try {
                 await request("/data/books", "POST", body);
                 navigate("/catalog")
             } catch (error) {
-                alert(error.message)
+                logoutHandler();
+                navigate("/login");
+                alert(error);
             }
         }
     };
