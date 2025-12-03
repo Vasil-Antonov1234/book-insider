@@ -2,7 +2,6 @@ import { Link, useNavigate, useParams } from "react-router";
 import useFetch from "../../hooks/useFetch.js";
 import { useContext } from "react";
 import UserContext from "../../contexts/UserContext.jsx";
-import CreateComment from "../comments/Comments.jsx";
 import Comments from "../comments/Comments.jsx";
 import BookContext from "../../contexts/BookContext.jsx";
 
@@ -61,7 +60,7 @@ export default function Details() {
                 </div>
             </div>
 
-            <BookContext.Provider value={bookId}>
+            <BookContext.Provider value={{bookId}} >
                 <Comments isOwner={isOwner}/>
             </BookContext.Provider>
 

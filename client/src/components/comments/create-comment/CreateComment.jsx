@@ -8,16 +8,15 @@ export default function CreateComment() {
         comment: ""
     };
 
-    const bookId = useContext(BookContext)
+    const {bookId} = useContext(BookContext)
     const { formImputRegister, formHandler } = useForm(initialValues, onSubmit);
     const { request } = useFetch()
 
     async function onSubmit(data) {
 
         try {
-        const result = await request("/data/comments", "POST", { ...data, bookId });
+        const result = await request("/data/comments", "POST", { ...data, bookId }); 
         
-
         console.log(result);
 
         } catch (error) {
