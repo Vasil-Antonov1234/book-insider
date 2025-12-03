@@ -62,7 +62,7 @@ export default function Details() {
             </div>
 
             <BookContext.Provider value={bookId}>
-                <Comments />
+                <Comments isOwner={isOwner}/>
             </BookContext.Provider>
 
         </section>

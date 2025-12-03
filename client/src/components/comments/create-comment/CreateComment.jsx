@@ -15,7 +15,10 @@ export default function CreateComment() {
     async function onSubmit(data) {
 
         try {
-        await request("/data/comments", "POST", { ...data, bookId });
+        const result = await request("/data/comments", "POST", { ...data, bookId });
+        
+
+        console.log(result);
 
         } catch (error) {
             alert(error.message)

@@ -1,24 +1,8 @@
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-export default function handleNewBookData(book, value) {
+export default function handleNewBookData(book) {
 
     const date = dateHandler(book.firstPublished);
-
-    if (!value) {
-
-        if (book._createdOn) {
-            return {
-                ...book,
-                firstPublished: date
-            }
-        }
-
-        return {
-            ...book,
-            firstPublished: date,
-            _createdOn: Date.now()
-        }
-    }
 
     return {
         ...book,
@@ -26,18 +10,18 @@ export default function handleNewBookData(book, value) {
     }
 }
 
-function dateHandler(input) {
+export function dateHandler(input, option = null) {
 
-    if (input.length === 10) {
+    if (option || input.length === 10) {
         const date = new Date(input);
 
-        const month = date.getMonth();
-        const day = date.getDate();
-        const year = date.getFullYear();
+        const localDate = date.toLocaleString(undefined, {
+            year: "numeric",
+            month: "long",
+            day: "numeric"
+        });
 
-        const convertedDate = `${months[month]} ${day}, ${year}`;
-
-        return convertedDate;
+        return localDate
     }
 
     const date = input.replace(",", "");
