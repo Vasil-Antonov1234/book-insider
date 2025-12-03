@@ -24,6 +24,31 @@ export default function CreateEdit() {
     const navigate = useNavigate();
 
     async function manageBookHandler(values, bookId) {
+        
+        if (!values.title) {
+            return alert("Title is required!")
+        }
+
+        if (!values.author) {
+            return alert("Author is required!")
+        }
+
+        if (!values.imageUrl) {
+            return alert("Image url is required!")
+        }
+
+        if (!values.genre) {
+            return alert("Genre is required!")
+        }
+
+        if (!values.firstPublished) {
+            return alert("First Published is required!")
+        }
+
+        if (!values.summary) {
+            return alert("Summary is required!")
+        }
+
         const body = handleNewBookData(values);
 
         if (bookId) {
