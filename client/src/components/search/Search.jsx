@@ -1,0 +1,20 @@
+export default function Search() {
+    return (
+        <div className="flex w-full justify-end items-center dark:bg-gray-800">
+
+            <div className="flex relative rounded-md w-full px-4 max-w-xl">
+                <input type="text" name="title" id="query" placeholder="Title"
+                    className="bg-white w-full p-3 rounded-md border-2 border-r-white rounded-r-none border-gray-500 placeholder-gray-500 dark:placeholder-gray-300 dark:bg-gray-500dark:text-gray-300 dark:border-none " />
+                <input type="text" name="author" id="query" placeholder="Author"
+                    className="bg-white w-full p-3 border-2 border-r-white border-r-white rounded-l-none border-gray-500 placeholder-gray-500 dark:placeholder-gray-300 dark:bg-gray-500dark:text-gray-300 dark:border-none " />
+                    <input type="text" name="genre" id="query" placeholder="Genre"
+                    className="bg-white w-full p-3 border-2 border-r-white rounded-r-none border-gray-500 placeholder-gray-500 dark:placeholder-gray-300 dark:bg-gray-500dark:text-gray-300 dark:border-none " />
+                <button
+                    className="inline-flex items-center gap-2 bg-gray-700 text-white text-lg font-semibold py-3 px-6 rounded-r-md hover:bg-[#b6c0d1] hover:text-black cursor-pointer">
+                    <span>search</span>
+                </button>
+            </div>
+
+        </div>
+    );
+}

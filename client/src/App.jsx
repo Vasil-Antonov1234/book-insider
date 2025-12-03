@@ -13,21 +13,18 @@ function App() {
     return (
         <div className="relative p-2">
 
-            <>
-                <Header />
+            <Header />
 
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/catalog" element={<Catalog />} />
-                    <Route path="/create" element={<CreateEdit />} />
-                    <Route path="/catalog/:bookId/edit" element={<CreateEdit />} />
-                    <Route path="/catalog/:bookId/details" element={<Details />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/register" element={<Register />} />
-                    <Route path="/logout" element={<Logout />} />
-                </Routes>
-            </>
-
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/catalog" element={<Catalog />} />
+                <Route path="/create" element={<CreateEdit />} />
+                <Route path="/catalog/:bookId/edit" element={<CreateEdit />} />
+                <Route path="/catalog/:bookId/details" element={<Details />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/logout" element={<Logout />} />
+            </Routes>
 
         </div>
     )

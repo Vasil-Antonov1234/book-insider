@@ -8,7 +8,7 @@ export default function BookCard({
     summary = summary + "...";
     
     return (
-        <div className="group relative h-118 w-94 [perspective:1000px] mt-8">
+        <div className="group relative h-118 w-94 [perspective:1000px]">
             <div
                 className="absolute duration-1000 w-full h-full [transform-style:preserve-3d] group-hover:[transform:rotateY(-180deg)]"
             >

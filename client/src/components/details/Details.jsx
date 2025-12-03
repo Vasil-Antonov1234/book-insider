@@ -51,7 +51,7 @@ export default function Details() {
                                 <Link to={`/catalog/${book._id}/edit`} className="block w-full bg-[#ccac68] hover:bg-[#db9e1a] text-white text-2xl font-bold py-2 px-4 rounded-lg">
                                     Edit
                                 </Link>
-                                <button onClick={deleteBookHandler} className="block w-full bg-[#ccac68] hover:bg-[red] text-white text-2xl font-bold py-2 px-4 rounded-lg">
+                                <button onClick={deleteBookHandler} className="block w-full bg-[#ccac68] hover:bg-[red] text-white text-2xl font-bold py-2 px-4 rounded-lg cursor-pointer">
                                     Delete
                                 </button>
                             </> : ""}

@@ -4,7 +4,7 @@ export default function Footer() {
     return (
         <div className="text-center mt-14">
             <p className="flex items-center justify-center mb-1 text-2xl font-semibold text-red-900">
-                <img src="/images/logo.png" className="h-12 mr-7 sm:h-24" alt="Book Insider logo" />
+                <img src="/images/logo.png" className="h-12 mr-7 sm:h-16" alt="Book Insider" />
                     The magic of words
             </p>
 
