@@ -3,7 +3,9 @@ import useForm from "../../../hooks/useForm.js"
 import BookContext from "../../../contexts/BookContext.jsx";
 import useFetch from "../../../hooks/useFetch.js";
 
-export default function CreateComment() {
+export default function CreateComment({
+    onChange
+}) {
     const initialValues = {
         comment: ""
     };
@@ -15,9 +17,9 @@ export default function CreateComment() {
     async function onSubmit(data) {
 
         try {
-        const result = await request("/data/comments", "POST", { ...data, bookId }); 
-        
-        console.log(result);
+        await request("/data/comments", "POST", { ...data, bookId });
+
+        onChange()
 
         } catch (error) {
             alert(error.message)
