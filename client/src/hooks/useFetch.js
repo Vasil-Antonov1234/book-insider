@@ -87,5 +87,7 @@ export default function useFetch(url, initialState) {
         }
     }
 
-    return { data, isPending, request }
+    return { data, setData, isPending, request }
 }
+
+// http://localhost:3030/data/books?where=title LIKE "" AND author LIKE "" AND genre%3D%22Adventure%22

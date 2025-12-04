@@ -3,14 +3,24 @@ import useFetch from "../../hooks/useFetch.js";
 import Search from "../search/Search.jsx";
 
 export default function Catalog() {
-    const { data, isPending } = useFetch("/data/books", []);
+    const { data, request, setData, isPending } = useFetch("/data/books", []);
     const books = Object.values(data);
+
+    async function SubmutHandler(formData) {
+        const data = Object.fromEntries(formData);
+
+        let query = `/data/books?where=title LIKE "${data.title}" AND author LIKE "${data.author}"${data.genre? ` AND genre%3D%22${data.genre}%22` : ""}`;
+
+        const searchData = await request(query);
+
+        setData(searchData);    
+    }
 
     return (
         <>
             <div className="flex items-center justify-center">
                 <h1 className="flex items-center justify-center font-bold text-6xl tracking-tight font-serif text-black mt-2">Collection</h1>
-                <Search />
+                <Search onSearch={SubmutHandler}/>
 
             </div>
 

@@ -1,6 +1,11 @@
-export default function Search() {
+export default function Search({
+    onSearch
+}) {
+
+    
+
     return (
-        <div className="flex w-full justify-end items-center dark:bg-gray-800">
+        <form action={onSearch} className="flex w-full justify-end items-center dark:bg-gray-800">
 
             <div className="flex relative rounded-md w-full px-4 max-w-xl">
                 <input type="text" name="title" id="query" placeholder="Title"
@@ -15,6 +20,9 @@ export default function Search() {
                 </button>
             </div>
 
-        </div>
+        </form>
     );
 }
+
+
+// http://localhost:3030/data/books?where=title LIKE "" AND author LIKE "" AND genre%3D%22Adventure%22
