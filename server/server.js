@@ -1382,7 +1382,7 @@
                 "firstPublished": "September 14, 2008",
                 "imageUrl": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1586722975i/2767052.jpg",
                 "_createdOn": 1617194373700,
-                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8"
+                "_ownerId": "847ec027-f659-4086-8032-5173e2f9c93a"
             },
             "2d5ae478-87c7-45fa-pccz-f04ab4918749": {
                 "_id": "2d5ae478-87c7-45fa-pccz-f04ab4918749",
@@ -1406,7 +1406,7 @@
                 "rating": 4.40,
                 "_createdOn": 1764000308400,
                 "_id": "0f11ac43-fd5b-484b-945e-0389fc1ef7d3",
-                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8"
+                "_ownerId": "847ec027-f659-4086-8032-5173e2f9c93a"
             }
         },
         comments: {

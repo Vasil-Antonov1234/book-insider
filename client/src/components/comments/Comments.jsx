@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import UserContext from "../../contexts/UserContext.jsx";
 import useFetch from "../../hooks/useFetch.js";
 import BookContext from "../../contexts/BookContext.jsx";
+import RateCard from "../rate-card/RateCard.jsx";
 
 export default function Comments({
     isOwner
@@ -28,7 +29,7 @@ export default function Comments({
             setComments(result)
         })()
 
-    }, [refresh, query])
+    }, [refresh])
 
     function onChange() {
         setRefresh(state => !state)
@@ -43,6 +44,9 @@ export default function Comments({
 
                 {isAuthenticated && !isOwner ? <CreateComment comments={comments} onChange={onChange} /> : ""}
             </div>
+
+            <RateCard />
+
         </div>
     );
 }

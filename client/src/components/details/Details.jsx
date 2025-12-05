@@ -4,6 +4,7 @@ import { useContext } from "react";
 import UserContext from "../../contexts/UserContext.jsx";
 import Comments from "../comments/Comments.jsx";
 import BookContext from "../../contexts/BookContext.jsx";
+import RateCard from "../rate-card/RateCard.jsx";
 
 export default function Details() {
     const { bookId } = useParams();
@@ -38,14 +39,14 @@ export default function Details() {
                         <p className="text-2xl">{book.author}</p>
                         <p className="font-bold">{book.genre}</p>
                         <p className="mb-6 text-body">{book.summary}</p>
-                        <p className="mb-6 text-body text-2xl">
+                        <div className="mb-6 text-body text-2xl">
                             <span className="font-bold">First published: </span>
                             {book.firstPublished}
-                        </p>
-                        <p className="mb-6 text-body">
+                        </div>
+                        <div className="mb-6 text-body">
                             <span className="font-bold">Rating: </span>
                             {book.rating}
-                        </p>
+                        </div>
                         <div className="mt-auto flex gap-2">
                             {isOwner ? <>
                                 <Link to={`/catalog/${book._id}/edit`} className="block w-full bg-[#ccac68] hover:bg-[#db9e1a] text-white text-2xl font-bold py-2 px-4 rounded-lg">
@@ -60,9 +61,11 @@ export default function Details() {
                 </div>
             </div>
 
-            <BookContext.Provider value={{bookId}} >
-                <Comments isOwner={isOwner}/>
+            <BookContext.Provider value={{ bookId }} >
+                <Comments isOwner={isOwner} />
             </BookContext.Provider>
+
+            {/* <RateCard /> */}
 
         </section>
     );
