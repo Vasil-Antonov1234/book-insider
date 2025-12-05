@@ -61,11 +61,9 @@ export default function Details() {
                 </div>
             </div>
 
-            <BookContext.Provider value={{ bookId }} >
+            <BookContext.Provider value={{ bookId, book }} >
                 <Comments isOwner={isOwner} />
             </BookContext.Provider>
-
-            {/* <RateCard /> */}
 
         </section>
     );

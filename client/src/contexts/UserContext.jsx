@@ -55,8 +55,6 @@ export function UserProvider({
 
     async function logoutHandler() {
 
-        console.log("test")
-
         try {
             await request("/users/logout", "GET", null, { accessToken: user?.accessToken })
         } catch (error) {
