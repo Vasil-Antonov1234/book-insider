@@ -1356,7 +1356,8 @@
                 "genre": "Adventure",
                 "rating": 4.20,
                 "totalRates": 5,
-                "totalRatingPoints": 21, 
+                "totalRatingPoints": 21,
+                "isRated": [], 
                 "firstPublished": "April 18, 2023",
                 "imageUrl": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1659407155i/61714633.jpg",
                 "_createdOn": 1617194370000,
@@ -1371,6 +1372,7 @@
                 "rating": 4.25,
                 "totalRates": 4,
                 "totalRatingPoints": 17,
+                "isRated": [],
                 "firstPublished": "November 8, 2011",
                 "imageUrl": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1321200959i/12976252.jpg",
                 "_createdOn": 1617194371000,
@@ -1385,6 +1387,7 @@
                 "rating": 4.33,
                 "totalRates": 6,
                 "totalRatingPoints": 26,
+                "isRated": [],
                 "firstPublished": "September 14, 2008",
                 "imageUrl": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1586722975i/2767052.jpg",
                 "_createdOn": 1617194373700,
@@ -1399,6 +1402,7 @@
                 "rating": 4.25,
                 "totalRates": 4,
                 "totalRatingPoints": 17,
+                "isRated": [],
                 "firstPublished": "September 15, 1986",
                 "imageUrl": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1334416842i/830502.jpg",
                 "_createdOn": 1417191973700,
@@ -1414,6 +1418,7 @@
                 "rating": 4.50,
                 "totalRates": 4,
                 "totalRatingPoints": 18,
+                "isRated": [],
                 "_createdOn": 1764000308400,
                 "_id": "0f11ac43-fd5b-484b-945e-0389fc1ef7d3",
                 "_ownerId": "847ec027-f659-4086-8032-5173e2f9c93a"
@@ -1436,7 +1441,6 @@
             }
 
         }
-
     }
     var rules$1 = {
         users: {
