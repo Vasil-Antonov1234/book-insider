@@ -65,7 +65,7 @@ export default function useFetch(url, initialState) {
             }
         }
 
-        if (config.isRate) {
+        if (config.isRate && isAuthenticated) {
             options.headers = {
                 ...options.headers,
                 "X-Admin": true
@@ -73,6 +73,7 @@ export default function useFetch(url, initialState) {
         }
 
         try {
+            
             const response = await fetch(`${BASE_URL}${url}`, options);
 
             if (!response.ok) {

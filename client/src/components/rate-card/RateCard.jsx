@@ -2,26 +2,38 @@ import { useContext } from "react";
 import BookContext from "../../contexts/BookContext.jsx";
 import { calcRatingHandler } from "../../utils/ratingHandler.js";
 import useFetch from "../../hooks/useFetch.js";
+import UserContext from "../../contexts/UserContext.jsx";
 
 export default function RateCard() {
-    const { request } = useFetch()
-    const { bookId, book } = useContext(BookContext)
+    const { request } = useFetch();
+    const { bookId, book } = useContext(BookContext);
+    const { user } = useContext(UserContext);
 
     async function rateHandler(formData) {
         const rating = formData.get("rating");
 
         const totalRates = book.totalRates + 1;
         const totalRatingPoints = book.totalRatingPoints + Number(rating);
-
+        
         const newRating = calcRatingHandler(totalRatingPoints, totalRates)
 
         const body = {
             rating: newRating,
             totalRates,
-            totalRatingPoints
+            totalRatingPoints,
+            isRated: [
+                ...book.isRated,
+                user._id
+            ]
         }
 
-        await request(`/data/books/${bookId}`, "PATCH", body, { isRate: true });
+        try {
+            await request(`/data/books/${bookId}`, "PATCH", body, { isRate: true });
+
+        } catch (error) {
+            alert(error);
+        };
+
     };
 
     return (
