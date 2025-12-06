@@ -47,8 +47,8 @@ export default function Details() {
                             {book.firstPublished}
                         </div>
                         <div className="mb-6 text-body">
-                            <span className="font-bold">Rating: </span>
-                            {book.rating}
+                            <span className="font-bold">Rating: {book.rating}</span>
+                            /5 from {book.totalRates} user ratings
                         </div>
                         <div className="mt-auto flex gap-2">
                             {isOwner ? <>

@@ -16,7 +16,10 @@ export default function BookCard({
                     className="absolute w-full h-full rounded-xl bg-transparent-to-br from-gray-300 to-gray-800 p-6 text-white [backface-visibility:hidden]"
                 >
                     <img src={book.imageUrl} alt={book.title} className="w-full h-full object-fit rounded" />
-                    <p className="px-4 py-2 bg-black opacity-70 text-black-900 mt-1 rounded-lg font-semibold transition-colors">Rating: {book.rating}</p>
+                    <div className="flex px-4 py-2 bg-black opacity-70  mt-1 rounded-lg transition-colors">
+                        <span className="font-bold">Rating: {book.rating}</span><span>/5</span>
+                    </div>
+                    
                 </div>
 
                 <div

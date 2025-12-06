@@ -22,7 +22,6 @@ export default function Catalog() {
             <div className="flex items-center justify-center">
                 <h1 className="flex items-center justify-center font-bold text-6xl tracking-tight font-serif text-black mt-2">Collection</h1>
                 <Search onSearch={SubmutHandler}/>
-
             </div>
 
             <div className="h-147 bg-gradient-to-r via-gray-500 mt-2 overflow-y-auto">
