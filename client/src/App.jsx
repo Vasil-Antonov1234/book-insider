@@ -7,6 +7,7 @@ import Catalog from "./components/catalog/Catalog.jsx"
 import CreateEdit from "./components/create-edit/CreateEdit.jsx"
 import Details from "./components/details/Details.jsx"
 import Logout from "./components/logout/Logout.jsx"
+import Footer from "./components/footer/Footer.jsx"
 
 function App() {
 
@@ -25,6 +26,8 @@ function App() {
                 <Route path="/register" element={<Register />} />
                 <Route path="/logout" element={<Logout />} />
             </Routes>
+
+            <Footer />
 
         </div>
     )
