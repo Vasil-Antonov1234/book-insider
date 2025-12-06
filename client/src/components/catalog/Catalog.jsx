@@ -9,7 +9,8 @@ export default function Catalog() {
     async function SubmutHandler(formData) {
         const data = Object.fromEntries(formData);
 
-        let query = `/data/books?where=title LIKE "${data.title}" AND author LIKE "${data.author}"${data.genre? ` AND genre%3D%22${data.genre}%22` : ""}`;
+        // let query = `/data/books?where=title LIKE "${data.title}" AND author LIKE "${data.author}"${data.genre? ` AND genre%3D%22${data.genre}%22` : ""}`;
+        let query = `/data/books?where=title LIKE "${data.title}" AND author LIKE "${data.author}" AND genre LIKE "${data.genre}"`;
 
         const searchData = await request(query);
 
