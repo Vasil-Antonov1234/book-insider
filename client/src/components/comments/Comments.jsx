@@ -7,7 +7,8 @@ import BookContext from "../../contexts/BookContext.jsx";
 import RateCard from "../rate-card/RateCard.jsx";
 
 export default function Comments({
-    isOwner
+    isOwner,
+    onRefresh
 }) {
     const { isAuthenticated, user } = useContext(UserContext);
     const { bookId, book } = useContext(BookContext);
@@ -47,7 +48,7 @@ export default function Comments({
                 {isAuthenticated && !isOwner ? <CreateComment comments={comments} onChange={onChange} /> : ""}
             </div>
 
-            {isAuthenticated && !isOwner && !isRated ? <RateCard /> : ""}
+            {isAuthenticated && !isOwner && !isRated ? <RateCard onRefresh={onRefresh}/> : ""}
 
         </div>
     );

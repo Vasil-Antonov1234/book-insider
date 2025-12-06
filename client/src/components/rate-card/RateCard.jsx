@@ -4,7 +4,9 @@ import { calcRatingHandler } from "../../utils/ratingHandler.js";
 import useFetch from "../../hooks/useFetch.js";
 import UserContext from "../../contexts/UserContext.jsx";
 
-export default function RateCard() {
+export default function RateCard({
+    onRefresh
+}) {
     const { request } = useFetch();
     const { bookId, book } = useContext(BookContext);
     const { user } = useContext(UserContext);
@@ -28,8 +30,10 @@ export default function RateCard() {
         }
 
         try {
-            await request(`/data/books/${bookId}`, "PATCH", body, { isRate: true });
+            const result = await request(`/data/books/${bookId}`, "PATCH", body, { isRate: true });
 
+            onRefresh(result)
+            
         } catch (error) {
             alert(error);
         };

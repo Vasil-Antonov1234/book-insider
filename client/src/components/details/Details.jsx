@@ -4,11 +4,10 @@ import { useContext } from "react";
 import UserContext from "../../contexts/UserContext.jsx";
 import Comments from "../comments/Comments.jsx";
 import BookContext from "../../contexts/BookContext.jsx";
-import RateCard from "../rate-card/RateCard.jsx";
 
 export default function Details() {
     const { bookId } = useParams();
-    const { request, data: book } = useFetch(`/data/books/${bookId}`, {});
+    const { request, data: book, setData } = useFetch(`/data/books/${bookId}`, {});
     const { user } = useContext(UserContext)
     const isOwner = book._ownerId === user?._id
 
@@ -27,6 +26,10 @@ export default function Details() {
                 alert(error.message);
             };
         };
+    }
+
+    function refreshData(value) {
+        setData(value)
     }
 
     return (
@@ -62,7 +65,7 @@ export default function Details() {
             </div>
 
             <BookContext.Provider value={{ bookId, book }} >
-                <Comments isOwner={isOwner} />
+                <Comments isOwner={isOwner} onRefresh={refreshData} />
             </BookContext.Provider>
 
         </section>
