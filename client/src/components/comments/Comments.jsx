@@ -9,8 +9,10 @@ import RateCard from "../rate-card/RateCard.jsx";
 export default function Comments({
     isOwner
 }) {
-    const { isAuthenticated } = useContext(UserContext);
-    const { bookId } = useContext(BookContext);
+    const { isAuthenticated, user } = useContext(UserContext);
+    const { bookId, book } = useContext(BookContext);
+
+    const isRated = book.isRated?.includes(user?._id)
 
     const query = new URLSearchParams({
         where: `bookId="${bookId}"`,
@@ -45,7 +47,7 @@ export default function Comments({
                 {isAuthenticated && !isOwner ? <CreateComment comments={comments} onChange={onChange} /> : ""}
             </div>
 
-            <RateCard />
+            {isAuthenticated && !isOwner && !isRated ? <RateCard /> : ""}
 
         </div>
     );
