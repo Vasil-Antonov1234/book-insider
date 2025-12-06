@@ -3,13 +3,16 @@ import BookContext from "../../contexts/BookContext.jsx";
 import { calcRatingHandler } from "../../utils/ratingHandler.js";
 import useFetch from "../../hooks/useFetch.js";
 import UserContext from "../../contexts/UserContext.jsx";
+import { useNavigate } from "react-router";
 
 export default function RateCard({
     onRefresh
 }) {
     const { request } = useFetch();
     const { bookId, book } = useContext(BookContext);
-    const { user } = useContext(UserContext);
+    const { user, logoutHandler } = useContext(UserContext);
+
+    const navigate = useNavigate();
 
     async function rateHandler(formData) {
         const rating = formData.get("rating");
@@ -35,9 +38,13 @@ export default function RateCard({
             onRefresh(result)
             
         } catch (error) {
-            alert(error);
+            if (error === "Invalid access token") {
+                logoutHandler();
+                navigate("/login")
+                return alert(error);
+            }
+            alert(error)
         };
-
     };
 
     return (
