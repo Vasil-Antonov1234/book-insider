@@ -14,6 +14,10 @@ export default function useFetch(url, initialState) {
                 return
             }
 
+            if (url.includes("undefined")) {
+                return
+            }
+
             const abordController = new AbortController();
 
             (async () => {
