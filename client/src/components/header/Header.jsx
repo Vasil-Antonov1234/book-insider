@@ -23,10 +23,11 @@ export default function Header() {
                             <NavLink className={({ isActive }) => isActive ? styles["selected"] : "text-sm px-4 py-2 leading-none rounded-full hover:bg-gray-700"} to="/login">Login</NavLink>
                         </>
                     }
+                    <NavLink className={({ isActive }) => isActive ? styles["selected"] : "text-sm px-4 py-2 leading-none rounded-full hover:bg-gray-700"} to="/user/profile">Profile</NavLink>
                 </div>
             </div>
             <div className="flex justify-end">
-            {isAuthenticated && <span className="text-sm px-4 py-2 leading-none rounded-full font-bold">Welcome {user.email}</span>}
+                {isAuthenticated && <span className="text-sm px-4 py-2 leading-none rounded-full font-bold">Welcome {user.email}</span>}
             </div>
         </nav>
 

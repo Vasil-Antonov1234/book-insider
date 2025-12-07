@@ -8,6 +8,7 @@ import CreateEdit from "./components/create-edit/CreateEdit.jsx"
 import Details from "./components/details/Details.jsx"
 import Logout from "./components/logout/Logout.jsx"
 import Footer from "./components/footer/Footer.jsx"
+import UserProfile from "./components/user-profile/UserProfile.jsx"
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/logout" element={<Logout />} />
+                <Route path="/user/profile" element={<UserProfile />} />
             </Routes>
 
             <Footer />
