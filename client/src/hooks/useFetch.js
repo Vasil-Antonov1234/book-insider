@@ -6,6 +6,7 @@ const BASE_URL = "http://localhost:3030";
 export default function useFetch(url, initialState) {
     const { user, isAuthenticated } = useContext(UserContext);
     const [isPending, setIsPending] = useState(true)
+    const [isPandingMyBooks, setIsPendingMyBooks] = useState(false)
     const [data, setData] = useState(initialState)
 
     useEffect(() => {

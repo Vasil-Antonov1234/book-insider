@@ -6,8 +6,7 @@ import { dateHandler } from "../../utils/handleNewBookData.js";
 
 export default function UserProfile() {
     const { user } = useContext(UserContext)
-    const { data } = useFetch("/data/books", []);
-    // const { data: myUser } = useFetch("/users/me", {});
+    const { data, isPending: isPendingMyBooks } = useFetch("/data/books", []);
     const books = Object.values(data);
     const myBooks = books.filter((book) => book._ownerId === user._id);
     const ratedBooks = books.filter((book) => Object.keys(book.isRated)?.includes(user._id));
@@ -16,7 +15,7 @@ export default function UserProfile() {
         where: `_ownerId="${user._id}"`,
     });
 
-    const {data: comments} = useFetch(`/data/comments?${query}`, []);
+    const { data: comments, isPending: isPendingMyComments } = useFetch(`/data/comments?${query}`, []);
     const myComments = Object.values(comments);
 
     return (
@@ -34,7 +33,7 @@ export default function UserProfile() {
                             <div className="space-y-2">
                                 <h3 className="font-bold text-2xl">My books</h3>
                                 <ul>
-                                    {myBooks.map((book) => <UserProfileCard key={book._id} book={book}/>)}
+                                    {isPendingMyBooks ? "Loading..." : myBooks.map((book) => <UserProfileCard key={book._id} book={book} />)}
                                 </ul>
                             </div>
                         </div>
@@ -44,7 +43,7 @@ export default function UserProfile() {
                         <div className="flex flex-col justify-between rounded-md p-6">
                             <div className="space-y-2">
                                 <h3 className="font-bold text-2xl">My comments</h3>
-                                {myComments.map((comment) => <UserProfileCard key={comment._id} comment={comment}/>)}
+                                {isPendingMyComments ? "Loading..." : myComments.map((comment) => <UserProfileCard key={comment._id} comment={comment} />)}
                             </div>
                         </div>
                     </div>
@@ -54,7 +53,7 @@ export default function UserProfile() {
                             <div className="space-y-2">
                                 <h3 className="font-bold text-2xl">Rated books</h3>
                                 <ul>
-                                    {ratedBooks.map((ratedBook) => <UserProfileCard key={ratedBook._id} ratedBook={ratedBook}/>)}
+                                    {isPendingMyBooks ? "Loading..." : ratedBooks.map((ratedBook) => <UserProfileCard key={ratedBook._id} ratedBook={ratedBook} />)}
                                 </ul>
                             </div>
                         </div>
