@@ -12,7 +12,10 @@ const initialValues = {
     genre: "",
     firstPublished: "",
     summary: "",
-    rating: 0
+    rating: 0,
+    totalRates: 0,
+    totalRatingPoints: 0,
+    isRated: {}
 }
 
 export default function CreateEdit() {

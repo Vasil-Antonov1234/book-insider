@@ -19,24 +19,29 @@ export default function RateCard({
 
         const totalRates = book.totalRates + 1;
         const totalRatingPoints = book.totalRatingPoints + Number(rating);
-        
+
         const newRating = calcRatingHandler(totalRatingPoints, totalRates)
+
+        const createdOn = Date.now();
 
         const body = {
             rating: newRating,
             totalRates,
             totalRatingPoints,
-            isRated: [
+            isRated: {
                 ...book.isRated,
-                user._id
-            ]
+                [user._id]: {
+                    _created_on: createdOn,
+                    rating: rating
+                }
+            }
         }
 
         try {
             const result = await request(`/data/books/${bookId}`, "PATCH", body, { isRate: true });
 
             onRefresh(result)
-            
+
         } catch (error) {
             if (error === "Invalid access token") {
                 logoutHandler();
@@ -60,6 +65,7 @@ export default function RateCard({
                         className="peer -ms-5 size-5 bg-transparent border-0 text-transparent cursor-pointer appearance-none checked:bg-none focus:bg-none focus:ring-0 focus:ring-offset-0"
                         name="rating"
                         defaultValue={5}
+                        // value={5}
                     />
                     <label
                         htmlFor="rating-1"
@@ -84,6 +90,7 @@ export default function RateCard({
                         className="peer -ms-5 size-5 bg-transparent border-0 text-transparent cursor-pointer appearance-none checked:bg-none focus:bg-none focus:ring-0 focus:ring-offset-0"
                         name="rating"
                         defaultValue={4}
+                        // value={4}
                     />
                     <label
                         htmlFor="rating-2"
@@ -108,6 +115,7 @@ export default function RateCard({
                         className="peer -ms-5 size-5 bg-transparent border-0 text-transparent cursor-pointer appearance-none checked:bg-none focus:bg-none focus:ring-0 focus:ring-offset-0"
                         name="rating"
                         defaultValue={3}
+                        // value={3}
                     />
                     <label
                         htmlFor="rating-3"
@@ -132,6 +140,7 @@ export default function RateCard({
                         className="peer -ms-5 size-5 bg-transparent border-0 text-transparent cursor-pointer appearance-none checked:bg-none focus:bg-none focus:ring-0 focus:ring-offset-0"
                         name="rating"
                         defaultValue={2}
+                        // value={2}
                     />
                     <label
                         htmlFor="rating-4"
@@ -156,6 +165,7 @@ export default function RateCard({
                         className="peer -ms-5 size-5 bg-transparent border-0 text-transparent cursor-pointer appearance-none checked:bg-none focus:bg-none focus:ring-0 focus:ring-offset-0"
                         name="rating"
                         defaultValue={1}
+                        // value={1}
                     />
                     <label
                         htmlFor="rating-5"

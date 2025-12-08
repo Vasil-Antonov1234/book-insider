@@ -13,7 +13,13 @@ export default function Comments({
     const { isAuthenticated, user } = useContext(UserContext);
     const { bookId, book } = useContext(BookContext);
 
-    const isRated = book.isRated?.includes(user?._id)
+    let isRated = false;
+
+    // const isRated = book.isRated?.includes(user?._id)
+
+    if (book.isRated) {
+        isRated = Object.keys(book.isRated)?.includes(user?._id)
+    }
 
     const query = new URLSearchParams({
         where: `bookId="${bookId}"`,
@@ -48,7 +54,7 @@ export default function Comments({
                 {isAuthenticated && !isOwner ? <CreateComment comments={comments} onChange={onChange} /> : ""}
             </div>
 
-            {isAuthenticated && !isOwner && !isRated ? <RateCard onRefresh={onRefresh}/> : ""}
+            {isAuthenticated && !isOwner && !isRated ? <RateCard onRefresh={onRefresh} /> : ""}
 
         </div>
     );
