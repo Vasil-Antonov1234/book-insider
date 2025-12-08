@@ -3,6 +3,7 @@ import UserContext from "../../contexts/UserContext.jsx";
 import useFetch from "../../hooks/useFetch.js";
 import UserProfileCard from "../user-profile-card/UserProfileCard.jsx";
 import { dateHandler } from "../../utils/handleNewBookData.js";
+import Spinner from "../spinner/Spinner.jsx";
 
 export default function UserProfile() {
     const { user } = useContext(UserContext)
@@ -33,7 +34,7 @@ export default function UserProfile() {
                             <div className="space-y-2">
                                 <h3 className="font-bold text-2xl">My books</h3>
                                 <ul>
-                                    {isPendingMyBooks ? "Loading..." : myBooks.map((book) => <UserProfileCard key={book._id} book={book} />)}
+                                    {isPendingMyBooks ? <Spinner /> : myBooks.map((book) => <UserProfileCard key={book._id} book={book} />)}
                                 </ul>
                             </div>
                         </div>
@@ -43,7 +44,7 @@ export default function UserProfile() {
                         <div className="flex flex-col justify-between rounded-md p-6">
                             <div className="space-y-2">
                                 <h3 className="font-bold text-2xl">My comments</h3>
-                                {isPendingMyComments ? "Loading..." : myComments.map((comment) => <UserProfileCard key={comment._id} comment={comment} />)}
+                                {isPendingMyComments ? <Spinner /> : myComments.map((comment) => <UserProfileCard key={comment._id} comment={comment} />)}
                             </div>
                         </div>
                     </div>
@@ -53,7 +54,7 @@ export default function UserProfile() {
                             <div className="space-y-2">
                                 <h3 className="font-bold text-2xl">Rated books</h3>
                                 <ul>
-                                    {isPendingMyBooks ? "Loading..." : ratedBooks.map((ratedBook) => <UserProfileCard key={ratedBook._id} ratedBook={ratedBook} />)}
+                                    {isPendingMyBooks ? <Spinner /> : ratedBooks.map((ratedBook) => <UserProfileCard key={ratedBook._id} ratedBook={ratedBook} />)}
                                 </ul>
                             </div>
                         </div>

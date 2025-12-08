@@ -1,6 +1,7 @@
 import BookCard from "../book-card/BookCard.jsx";
 import useFetch from "../../hooks/useFetch.js";
 import Search from "../search/Search.jsx";
+import SpinnerBig from "../spinner/SpinnerBig.jsx";
 
 export default function Catalog() {
     const { data, request, setData, isPending } = useFetch("/data/books", []);
@@ -25,7 +26,7 @@ export default function Catalog() {
             </div>
 
             <div className="h-147 bg-gradient-to-r via-gray-500 mt-2 overflow-y-auto">
-                {isPending ? <h1 className="flex items-center justify-center font-bold text-5xl tracking-tight font-serif text-white">Loading...</h1> :
+                {isPending ? <SpinnerBig /> :
 
                     <div className="flex items-center justify-center grid grid-cols-4 gap-4 p-4">
                         {books.map((book) => <BookCard key={book._id} book={book} />)}
@@ -36,3 +37,5 @@ export default function Catalog() {
 
     );
 }
+
+{/* <h1 className="flex items-center justify-center font-bold text-5xl tracking-tight font-serif text-white">Loading...</h1> */}
