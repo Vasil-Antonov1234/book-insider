@@ -4,8 +4,6 @@ export default function CommentCard({
     comment
 }) {
     const date = dateHandler(comment._createdOn, {convert: "timestamp"});
-
-    // console.log(comment)
     
     return (
         <div className="p-4 rounded-lg shadow-md">

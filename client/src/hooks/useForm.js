@@ -16,7 +16,8 @@ export default function useForm(values, callback, bookId) {
     }
 
     async function formHandler() {
-        await callback(data, bookId)
+        await callback(data, bookId);
+        setData(values);
     }
 
     function formImputRegister(name) {
