@@ -9,13 +9,17 @@ To run the application:
  ```
  node server.js
  ```
- This will start [SoftUni Practice Server](https://github.com/softuni-practice-server/softuni-practice-server) on `http://localhost:3030`
+ This will start [SoftUni Practice Server](https://github.com/softuni-practice-server/softuni-practice-server) on `http://localhost:3030`. 
+ 
  Then go to **client** directory and run
  ```
- mpm install
+ npm install
+ ```
+ to install the necessary dependencies and
+ ```
  npm run dev
  ```
- This will install the necessary dependencies and start the client on `http://localhost:5173/`
+ to start the client on `http://localhost:5173/`
 
 ## Public part
 The public part is for all authenticated and non authenticated users. It gives you access to the following functionalities:
