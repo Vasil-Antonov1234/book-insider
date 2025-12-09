@@ -7,14 +7,14 @@ import UserContext from "../../../contexts/UserContext.jsx";
 import { toast } from "react-toastify";
 
 export default function CreateComment({
-    onChange
+    onPost,
 }) {
     const initialValues = {
         comment: ""
     };
 
     const { bookId } = useContext(BookContext);
-    const { logoutHandler } = useContext(UserContext);
+    const { logoutHandler, user } = useContext(UserContext);
     const { formImputRegister, formHandler } = useForm(initialValues, onSubmit);
     const { request } = useFetch()
 
@@ -23,9 +23,15 @@ export default function CreateComment({
     async function onSubmit(data) {
 
         try {
-            await request("/data/comments", "POST", { ...data, bookId });
+            const result = await request("/data/comments", "POST", { ...data, bookId });
 
-            onChange();
+            onPost({
+                type: "ADD_COMMENT",
+                payload: {
+                    ...result,
+                    creaqtor: { email: user.email }
+                }
+            });
 
         } catch (error) {
 
