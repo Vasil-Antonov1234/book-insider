@@ -12,6 +12,7 @@ import UserProfile from "./components/user-profile/UserProfile.jsx"
 import { ToastContainer } from "react-toastify"
 import IsAuthenticated from "./components/route-guards/IsAuthenticated.jsx"
 import IsGuest from "./components/route-guards/IsGuest.jsx"
+import NotFound from "./components/not-found/NotFound.jsx"
 
 function App() {
 
@@ -38,7 +39,9 @@ function App() {
                     <Route path="/catalog/:bookId/edit" element={<CreateEdit />} />
                     <Route path="/logout" element={<Logout />} />
                 </Route>
-                
+
+                <Route path="*" element={<NotFound />} />
+
             </Routes>
 
             <Footer />
