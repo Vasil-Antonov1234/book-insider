@@ -17,7 +17,7 @@ export default function Header() {
                         <>
                             <NavLink className={({ isActive }) => isActive ? styles["selected"] : "text-sm px-4 py-2 leading-none rounded-full hover:bg-gray-700"} to="/create">Create Book</NavLink>
                             <NavLink className={({ isActive }) => isActive ? styles["selected"] : "text-sm px-4 py-2 leading-none rounded-full hover:bg-gray-700"} to={"/logout"}>Logout</NavLink>
-                            <NavLink className={({ isActive }) => isActive ? styles["selected"] : "text-sm px-4 py-2 leading-none rounded-full hover:bg-gray-700"} to="/user/profile">Profile</NavLink>
+                            <NavLink className={({ isActive }) => isActive ? styles["selected"] : "text-sm px-4 py-2 leading-none rounded-full hover:bg-gray-700"} to="/user/profile">My Profile</NavLink>
                         </> :
                         <>
                             <NavLink className={({ isActive }) => isActive ? styles["selected"] : "text-sm px-4 py-2 leading-none rounded-full hover:bg-gray-700"} to="/register">Register</NavLink>

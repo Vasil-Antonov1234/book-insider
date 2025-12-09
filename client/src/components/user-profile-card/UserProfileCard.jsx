@@ -19,13 +19,14 @@ export default function UserProfileCard(props) {
     if (props.comment) {
 
         return (
-            <li className="mt-3">
-                <Link className="hover:underline font-bold" to={`/catalog/${book._id}/details`}>{book.title}</Link>
-                <div>
-                    <p>{props.comment.comment}</p>
-                    <p className="text-sm text-muted-foreground italic"> Posted on {dateHandler(props.comment._createdOn, true)}</p>
-                </div>
-            </li>
+            book.title ?
+                <li className="mt-3">
+                    <Link className="hover:underline font-bold" to={`/catalog/${book._id}/details`}>{book.title}</Link>
+                    <div>
+                        <p>{props.comment.comment}</p>
+                        <p className="text-sm text-muted-foreground italic"> Posted on {dateHandler(props.comment._createdOn, true)}</p>
+                    </div>
+                </li> : ""
         )
     }
 

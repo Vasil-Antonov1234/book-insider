@@ -40,7 +40,7 @@ export default function RateCard({
 
         try {
             const result = await request(`/data/books/${bookId}`, "PATCH", body, { isRate: true });
-
+          
             onRefresh(result)
 
         } catch (error) {

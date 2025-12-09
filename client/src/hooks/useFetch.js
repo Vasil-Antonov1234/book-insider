@@ -33,7 +33,7 @@ export default function useFetch(url, initialState) {
                     };
 
                     const result = await response.json()
-                    
+
                     setData(result);
                     setIsPending(false)
                 } catch (error) {

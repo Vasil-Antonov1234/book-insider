@@ -9,8 +9,8 @@ import { toast } from "react-toastify";
 export default function Details() {
     const { bookId } = useParams();
     const { request, data: book, setData } = useFetch(`/data/books/${bookId}`, {});
-    const { user } = useContext(UserContext)
-    const isOwner = book._ownerId === user?._id
+    const { user } = useContext(UserContext);
+    const isOwner = book._ownerId === user?._id;
 
     const navigate = useNavigate();
 
@@ -29,7 +29,7 @@ export default function Details() {
         };
     }
 
-    function refreshData(value) {
+    function refreshDetails(value) {
         setData(value)
     }
 
@@ -66,7 +66,7 @@ export default function Details() {
             </div>
 
             <BookContext.Provider value={{ bookId, book }} >
-                <Comments isOwner={isOwner} onRefresh={refreshData} />
+                <Comments isOwner={isOwner} onRefresh={refreshDetails} />
             </BookContext.Provider>
 
         </section>

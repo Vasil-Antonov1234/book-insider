@@ -15,7 +15,7 @@ export default function Catalog() {
 
         const searchData = await request(query);
 
-        setData(searchData);    
+        setData(searchData);
     }
 
     return (
@@ -37,5 +37,3 @@ export default function Catalog() {
 
     );
 }
-
-{/* <h1 className="flex items-center justify-center font-bold text-5xl tracking-tight font-serif text-white">Loading...</h1> */}
