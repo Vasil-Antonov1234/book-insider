@@ -77,7 +77,7 @@ export default function CreateEdit() {
     return (
         <div className="container mx-auto p-4">
             {/* Page Title */}
-            <h1 className="text-3xl font-bold text-[black] mb-6 flex items-center justify-center font-serif text-5xl">{bookId ? "Edit Book" : "Create Book"}</h1>
+            <h1 className="text-3xl font-bold text-[black] mb-6 flex items-center justify-center font-serif text-5xl">{bookId ? "Edit Review" : "Create Review"}</h1>
 
             <form action={formHandler} className="grid grid-cols-1 gap-6">
                 {/* Title */}

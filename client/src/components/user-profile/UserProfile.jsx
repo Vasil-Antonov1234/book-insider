@@ -32,7 +32,7 @@ export default function UserProfile() {
                     <div className="relative overflow-hidden rounded-lg border bg-gray-100/50 p-2">
                         <div className="flex flex-col justify-between rounded-md p-6">
                             <div className="space-y-2">
-                                <h3 className="font-bold text-2xl">My books</h3>
+                                <h3 className="font-bold text-2xl">My reviews</h3>
                                 <ul>
                                     {isPendingMyBooks ? <Spinner /> : myBooks.map((book) => <UserProfileCard key={book._id} book={book} />)}
                                 </ul>
