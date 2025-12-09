@@ -4,6 +4,7 @@ import BookContext from "../../../contexts/BookContext.jsx";
 import useFetch from "../../../hooks/useFetch.js";
 import { useNavigate } from "react-router";
 import UserContext from "../../../contexts/UserContext.jsx";
+import { toast } from "react-toastify";
 
 export default function CreateComment({
     onChange
@@ -31,10 +32,10 @@ export default function CreateComment({
             if (error === "Invalid access token") {
                 logoutHandler();
                 navigate("/login")
-                return alert(error);
+                return toast.error(error);
             }
 
-            alert(error);
+            toast.error(error);
         }
     };
 

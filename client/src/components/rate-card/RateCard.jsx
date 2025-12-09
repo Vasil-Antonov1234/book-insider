@@ -4,6 +4,7 @@ import { calcRatingHandler } from "../../utils/ratingHandler.js";
 import useFetch from "../../hooks/useFetch.js";
 import UserContext from "../../contexts/UserContext.jsx";
 import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
 
 export default function RateCard({
     onRefresh
@@ -46,9 +47,9 @@ export default function RateCard({
             if (error === "Invalid access token") {
                 logoutHandler();
                 navigate("/login")
-                return alert(error);
+                return toast.error(error);
             }
-            alert(error)
+            toast.error(error)
         };
     };
 

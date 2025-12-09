@@ -4,6 +4,7 @@ import { useContext } from "react";
 import UserContext from "../../contexts/UserContext.jsx";
 import Comments from "../comments/Comments.jsx";
 import BookContext from "../../contexts/BookContext.jsx";
+import { toast } from "react-toastify";
 
 export default function Details() {
     const { bookId } = useParams();
@@ -23,7 +24,7 @@ export default function Details() {
 
                 navigate("/catalog");
             } catch (error) {
-                alert(error.message);
+                toast.error(error.message);
             };
         };
     }

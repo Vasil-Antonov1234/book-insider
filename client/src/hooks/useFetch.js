@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import UserContext from "../contexts/UserContext.jsx";
+import { toast } from "react-toastify";
 
 const BASE_URL = "http://localhost:3030";
 
 export default function useFetch(url, initialState) {
     const { user, isAuthenticated } = useContext(UserContext);
     const [isPending, setIsPending] = useState(true)
-    const [isPandingMyBooks, setIsPendingMyBooks] = useState(false)
     const [data, setData] = useState(initialState)
 
     useEffect(() => {
@@ -38,7 +38,7 @@ export default function useFetch(url, initialState) {
                     setIsPending(false)
                 } catch (error) {
                     if (error.name !== "AbortError") {
-                        alert(error.message)
+                        toast.error(error.message)
                     }
                 }
             })()

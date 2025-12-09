@@ -2,6 +2,7 @@ import { createContext } from "react";
 import useFetch from "../hooks/useFetch.js";
 import { useNavigate } from "react-router";
 import usePersistedState from "../hooks/usePersistedState.js";
+import { toast } from "react-toastify";
 
 const UserContext = createContext({
     user: {
@@ -34,7 +35,7 @@ export function UserProvider({
 
             navigate("/");
         } catch (error) {
-            alert(error);
+            toast.error(error);
         };
 
 
@@ -49,7 +50,7 @@ export function UserProvider({
 
             navigate("/")
         } catch (error) {
-            alert(error)
+            toast.error(error)
         }
     }
 
@@ -63,7 +64,7 @@ export function UserProvider({
                 return
             }
             
-            alert(error)
+            toast.error(error)
         } finally {
             setUser(null);
         }

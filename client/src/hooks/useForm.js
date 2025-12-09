@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 // import request from "../utils/request.js"
 import handleNewBookData from "../utils/handleNewBookData.js"
 import useFetch from "./useFetch.js"
+import { toast } from "react-toastify"
 
 export default function useForm(values, callback, bookId) {
     const { request } = useFetch()
@@ -36,7 +37,7 @@ export default function useForm(values, callback, bookId) {
 
                     setData(convertedBook);
                 } catch (error) {
-                    alert(error.message)
+                    toast.error(error.message)
                 }
             })()
         }

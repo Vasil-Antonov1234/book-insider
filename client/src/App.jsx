@@ -9,11 +9,14 @@ import Details from "./components/details/Details.jsx"
 import Logout from "./components/logout/Logout.jsx"
 import Footer from "./components/footer/Footer.jsx"
 import UserProfile from "./components/user-profile/UserProfile.jsx"
+import { ToastContainer } from "react-toastify"
 
 function App() {
 
     return (
         <div className="relative p-2">
+
+            <ToastContainer />
 
             <Header />
 

@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import useForm from "../../hooks/useForm.js";
 import { useContext } from "react";
 import UserContext from "../../contexts/UserContext.jsx";
+import { toast } from "react-toastify";
 
 export default function Login() {
 
@@ -17,7 +18,7 @@ export default function Login() {
         const { email, password } = userData;
 
         if (!email || !password) {
-            return alert("Email and password are required!");
+            return toast.error("Email and password are required!");
         };
 
         loginHandler(userData);

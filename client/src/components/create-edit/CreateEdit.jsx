@@ -4,6 +4,7 @@ import useForm from "../../hooks/useForm.js";
 import useFetch from "../../hooks/useFetch.js";
 import { useContext } from "react";
 import UserContext from "../../contexts/UserContext.jsx";
+import { toast } from "react-toastify";
 
 const initialValues = {
     title: "",
@@ -29,27 +30,27 @@ export default function CreateEdit() {
     async function manageBookHandler(values, bookId) {
         
         if (!values.title) {
-            return alert("Title is required!")
+            return toast.error("Title is required!")
         }
 
         if (!values.author) {
-            return alert("Author is required!")
+            return toast.error("Author is required!")
         }
 
         if (!values.imageUrl) {
-            return alert("Image url is required!")
+            return toast.error("Image url is required!")
         }
 
         if (!values.genre) {
-            return alert("Genre is required!")
+            return toast.error("Genre is required!")
         }
 
         if (!values.firstPublished) {
-            return alert("First Published is required!")
+            return toast.error("First Published is required!")
         }
 
         if (!values.summary) {
-            return alert("Summary is required!")
+            return toast.error("Summary is required!")
         }
 
         const body = handleNewBookData(values);
@@ -59,7 +60,7 @@ export default function CreateEdit() {
                 await request(`/data/books/${bookId}`, "PATCH", body);
                 navigate(`/catalog/${bookId}/details`)
             } catch (error) {
-                alert(error.message);
+                toast.error(error.message);
             }
         } else {
             try {
@@ -68,7 +69,7 @@ export default function CreateEdit() {
             } catch (error) {
                 logoutHandler();
                 navigate("/login");
-                alert(error);
+                toast.error(error);
             }
         }
     };
