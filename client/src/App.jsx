@@ -10,6 +10,8 @@ import Logout from "./components/logout/Logout.jsx"
 import Footer from "./components/footer/Footer.jsx"
 import UserProfile from "./components/user-profile/UserProfile.jsx"
 import { ToastContainer } from "react-toastify"
+import IsAuthenticated from "./components/route-guards/IsAuthenticated.jsx"
+import IsGuest from "./components/route-guards/IsGuest.jsx"
 
 function App() {
 
@@ -24,12 +26,19 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/catalog" element={<Catalog />} />
                 <Route path="/create" element={<CreateEdit />} />
-                <Route path="/catalog/:bookId/edit" element={<CreateEdit />} />
                 <Route path="/catalog/:bookId/details" element={<Details />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/logout" element={<Logout />} />
-                <Route path="/user/profile" element={<UserProfile />} />
+
+                <Route element={<IsAuthenticated />}>
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
+                </Route>
+
+                <Route element={<IsGuest />}>
+                    <Route path="/user/profile" element={<UserProfile />} />
+                    <Route path="/catalog/:bookId/edit" element={<CreateEdit />} />
+                    <Route path="/logout" element={<Logout />} />
+                </Route>
+                
             </Routes>
 
             <Footer />

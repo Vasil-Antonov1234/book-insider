@@ -26,7 +26,7 @@ export default function UserProfileCard(props) {
                         <p>{props.comment.comment}</p>
                         <p className="text-sm text-muted-foreground italic"> Posted on {dateHandler(props.comment._createdOn, true)}</p>
                     </div>
-                </li> : ""
+                </li> : ""  
         )
     }
 
