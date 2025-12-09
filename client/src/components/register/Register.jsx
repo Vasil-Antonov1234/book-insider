@@ -13,7 +13,7 @@ export default function Register() {
     }
 
     const { registerHandler } = useContext(UserContext)
-    const { formHandler, formImputRegister} = useForm(initialValues, onSubmit, "");
+    const { formHandler, formImputRegister } = useForm(initialValues, onSubmit, "");
 
     function onSubmit(formData) {
         const { email, password, rePassword } = formData;
@@ -32,8 +32,10 @@ export default function Register() {
     }
 
     return (
-        <section className="bg-[url('/images/login-register.jpg')] bg-cover bg-center flex items-center justify-center min-h-screen">
-            <div className="bg-white p-10 rounded-lg shadow-lg w-full max-w-lg">
+        <section>
+            <div className="relative bg-[url('/images/login-register.jpg')] min-h-screen opacity-40">
+            </div>
+            <div className="absolute bottom-1/3 left-1/3 bg-white p-10 rounded-lg shadow-lg w-full max-w-lg">
                 <h2 className="text-3xl font-semibold mb-6 text-center text-gray-800">Create an Account</h2>
                 <form action={formHandler}>
                     <div className="mb-5">
