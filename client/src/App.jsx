@@ -13,6 +13,7 @@ import { ToastContainer } from "react-toastify"
 import IsAuthenticated from "./components/route-guards/IsAuthenticated.jsx"
 import IsGuest from "./components/route-guards/IsGuest.jsx"
 import NotFound from "./components/not-found/NotFound.jsx"
+import UserEdit from "./components/user-profile/user-edit/UserEdit.jsx"
 
 function App() {
 
@@ -38,6 +39,7 @@ function App() {
                     <Route path="/user/profile" element={<UserProfile />} />
                     <Route path="/catalog/:bookId/edit" element={<CreateEdit />} />
                     <Route path="/logout" element={<Logout />} />
+                    <Route path="/user/:userId/edit" element={<UserEdit />} />
                 </Route>
 
                 <Route path="*" element={<NotFound />} />

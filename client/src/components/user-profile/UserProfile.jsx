@@ -4,6 +4,7 @@ import useFetch from "../../hooks/useFetch.js";
 import UserProfileCard from "../user-profile-card/UserProfileCard.jsx";
 import { dateHandler } from "../../utils/handleNewBookData.js";
 import Spinner from "../spinner/Spinner.jsx";
+import { Link } from "react-router";
 
 export default function UserProfile() {
     const { user } = useContext(UserContext)
@@ -25,7 +26,9 @@ export default function UserProfile() {
                 <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
                     <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl font-bold">Profile</h2>
                     <p className="text-3xl">{user.email}</p>
-                    <p className="italic">Created on {dateHandler(user._createdOn, true)}</p>
+                    <img className="w-24 h-24" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5KIVAXW9AI0QGgkf0dbYPHrd0ankxzbhz1hcQN2NLq2YypDqiVrYowkJlt2Ky6p5uNzM&usqp=CAU" alt="avatar" />
+                    <p className="italic">Member since {dateHandler(user._createdOn, true)}</p>
+                    <Link to={`/user/${user._id}/edit`}>Edit</Link>
                 </div>
                 <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-[64rem] md:grid-cols-3">
 
