@@ -13,14 +13,7 @@ const logger = require("firebase-functions/logger");
 
 const server = require("./server/server");
 
-exports.server = onRequest((req, res) => {
-    res.setHeaders("Access-Control-Allow-Origin", "http://localhost:5173");
-
-    if (req.method === "OPTIONS") {
-        res.status(204).send("");
-        return
-    }
-    
+exports.server = onRequest((req, res) => { 
     server.emit("request", req, res);
 });
 
