@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import UserContext from "../contexts/UserContext.jsx";
 import { toast } from "react-toastify";
 
-const BASE_URL = "http://localhost:3030";
+const BASE_URL = import.meta.env.VITE_APP_SERVER_URL;
 
 export default function useFetch(url, initialState) {
     const { user, isAuthenticated } = useContext(UserContext);
@@ -40,7 +40,7 @@ export default function useFetch(url, initialState) {
                 if (error.name !== "AbortError") {
                     
                     if (error.message === "Failed to fetch") {
-                        return toast.error("Server in Unavailable")
+                        return toast.error("Server is Unavailable")
                     }
                     
                     toast.error(error.message)
@@ -108,4 +108,4 @@ export default function useFetch(url, initialState) {
     return { data, setData, isPending, request }
 }
 
-// http://localhost:3030/data/books?where=title LIKE "" AND author LIKE "" AND genre%3D%22Adventure%22
+// `${import.meta.env.VITE_APP_SERVER_URL}/data/books?where=title LIKE "" AND author LIKE "" AND genre%3D%22Adventure%22`

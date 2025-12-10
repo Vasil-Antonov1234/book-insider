@@ -178,14 +178,15 @@
             .filter(s => s != '')
             .map(x => x.split('='))
             .reduce((p, [k, v]) => Object.assign(p, { [k]: decodeURIComponent(v.replace(/\+/g, " ")) }), {});
+        const body = req.body;
 
-        let body;
-        // If req stream has ended body has been parsed
-        if (req.readableEnded) {
-            body = req.body;
-        } else {
-            body = await parseBody(req);
-        }
+        // let body;
+        // // If req stream has ended body has been parsed
+        // if (req.readableEnded) {
+        //     body = req.body;
+        // } else {
+        //     body = await parseBody(req);
+        // }
 
         return {
             serviceName,
@@ -1360,7 +1361,7 @@
                 "rating": 4.20,
                 "totalRates": 5,
                 "totalRatingPoints": 21,
-                "isRated": {}, 
+                "isRated": {},
                 "firstPublished": "April 18, 2023",
                 "imageUrl": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1659407155i/61714633.jpg",
                 "_createdOn": 1617194370000,
@@ -1490,15 +1491,6 @@
 
     const server = http__default['default'].createServer(requestHandler(plugins, services));
 
-    const port = 3030;
-
-    server.listen(port);
-
-    console.log(`Server started on port ${port}. You can make requests to http://localhost:${port}/`);
-    console.log(`Admin panel located at http://localhost:${port}/admin`);
-
-    var softuniPracticeServer = server;
-
-    return softuniPracticeServer;
+    return server;
 
 })));

@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:3030/jsonstore";
+const BASE_URL = `${import.meta.env.VITE_APP_SERVER_URL}/jsonstore`;
 
 export default async function request(url, method = "GET", body) {
 

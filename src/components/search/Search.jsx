@@ -37,7 +37,7 @@ export default function Search({
 }
 
 
-// http://localhost:3030/data/books?where=title LIKE "" AND author LIKE "" AND genre%3D%22Adventure%22
+// `${import.meta.env.VITE_APP_SERVER_URL}/data/books?where=title LIKE "" AND author LIKE "" AND genre%3D%22Adventure%22`
 
 {/* <input type="text" name="genre" id="query" placeholder="Genre"
                     className="bg-white w-full p-3 border-2 border-r-white rounded-r-none border-gray-500 placeholder-gray-500 dark:placeholder-gray-300 dark:bg-gray-500dark:text-gray-300 dark:border-none " /> */}
