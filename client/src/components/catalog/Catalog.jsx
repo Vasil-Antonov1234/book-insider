@@ -21,12 +21,12 @@ export default function Catalog() {
     return (
         <>
             <div className="flex items-center justify-center">
-                <h1 className="flex items-center justify-center font-bold text-6xl tracking-tight font-heading text-black mt-2">Collection</h1>
+                <h1 className="flex items-center justify-center font-bold text-6xl tracking-tight font-heading mt-2">Collection</h1>
                 <Search onSearch={SubmutHandler}/>
             </div>
 
             <div className="h-147 bg-gradient-to-r via-gray-500 mt-2 overflow-y-auto">
-                {isPending ? <SpinnerBig /> :
+                {isPending ? <h1 className="text-4xl">Loading...</h1> :
 
                     <div className="flex items-center justify-center grid grid-cols-4 gap-4 p-4">
                         {books.map((book) => <BookCard key={book._id} book={book} />)}

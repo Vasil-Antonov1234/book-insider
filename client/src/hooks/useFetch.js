@@ -11,41 +11,46 @@ export default function useFetch(url, initialState) {
 
     useEffect(() => {
 
-            if (!url) {
-                return
-            }
+        if (!url) {
+            return
+        }
 
-            if (url.includes("undefined")) {
-                return
-            }
+        if (url.includes("undefined")) {
+            return
+        }
 
-            const abordController = new AbortController();
+        const abordController = new AbortController();
 
-            (async () => {
+        (async () => {
 
-                try {
-                    // const books = await request(url);
-                    const response = await fetch(`${BASE_URL}${url}`, { signal: abordController.signal });
+            try {
+                // const books = await request(url);
+                const response = await fetch(`${BASE_URL}${url}`, { signal: abordController.signal });
 
-                    if (!response.ok || response.status === 204) {
-                        setIsPending(false)
-                        return {};
-                    };
-
-                    const result = await response.json()
-
-                    setData(result);
+                if (!response.ok || response.status === 204) {
                     setIsPending(false)
-                } catch (error) {
-                    if (error.name !== "AbortError") {
-                        toast.error(error.message)
-                    }
-                }
-            })()
+                    return {};
+                };
 
-            return () => {
-                abordController.abort();
+                const result = await response.json()
+
+                setData(result);
+                setIsPending(false)
+            } catch (error) {
+                if (error.name !== "AbortError") {
+                    
+                    if (error.message === "Failed to fetch") {
+                        return toast.error("Server in Unavailable")
+                    }
+                    
+                    toast.error(error.message)
+                }
             }
+        })()
+
+        return () => {
+            abordController.abort();
+        }
 
     }, [url])
 
@@ -78,7 +83,7 @@ export default function useFetch(url, initialState) {
         }
 
         try {
-            
+
             const response = await fetch(`${BASE_URL}${url}`, options);
 
             if (!response.ok) {
@@ -96,7 +101,7 @@ export default function useFetch(url, initialState) {
 
             return result;
         } catch (error) {
-           throw error.message
+            throw error.message
         }
     }
 

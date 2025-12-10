@@ -5,7 +5,7 @@ import { Navigate, Outlet } from "react-router";
 export default function IsGuest() {
     const {isAuthenticated} = useContext(UserContext);
 
-    console.log(isAuthenticated)
+    // console.log(isAuthenticated)
 
     if (!isAuthenticated) {
         return <Navigate to="/login" />

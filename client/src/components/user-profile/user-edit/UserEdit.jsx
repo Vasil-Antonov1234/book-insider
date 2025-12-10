@@ -8,7 +8,7 @@ import useFetch from "../../../hooks/useFetch.js";
 export default function UserEdit() {
     const { request } = useFetch()
     const { userId } = useParams();
-    const { editProfileHandler } = useContext(UserContext);
+    const { editProfileHandler, logoutHandler } = useContext(UserContext);
 
     const initialValues = {
         imageUrl: "",
@@ -17,21 +17,28 @@ export default function UserEdit() {
     const { formImputRegister, formHandler } = useForm(initialValues, onSubmit, "")
 
     async function onSubmit(formData) {
-        
+
         const { imageUrl } = formData
-        
+
         if (!imageUrl) {
             return toast.error("Image url is required");
         };
 
-        const allAvatars = await request(`/data/avatars`);
-        const avatar = allAvatars.filter((x) => x._ownerId === userId);
-       
-        editProfileHandler(imageUrl, avatar);
+        try {
+            const allAvatars = await request(`/data/avatars`);
+            const avatar = allAvatars.filter((x) => x._ownerId === userId);
 
+            editProfileHandler(imageUrl, avatar);
+        } catch (error) {
+            
+            if (error === "Invalid access token") {
+                logoutHandler();
+                return toast.error(error) 
+            }
+            
+            toast.error(error)
+        }
     };
-
-    // /data/comments?where=recipeId%3D%228f414b4f-ab39-4d36-bedb-2ad69da9c830%22&load=author%3D_ownerId%3Ausers
 
     return (
         <section>
