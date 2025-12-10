@@ -16,7 +16,12 @@ export default function RateCard({
     const navigate = useNavigate();
 
     async function rateHandler(formData) {
-        const rating = formData.get("rating");
+        
+        let rating = formData.get("rating");
+
+        if (!rating) {
+            rating = 0
+        };
 
         const totalRates = book.totalRates + 1;
         const totalRatingPoints = book.totalRatingPoints + Number(rating);
@@ -66,7 +71,6 @@ export default function RateCard({
                         className="peer -ms-5 size-5 bg-transparent border-0 text-transparent cursor-pointer appearance-none checked:bg-none focus:bg-none focus:ring-0 focus:ring-offset-0"
                         name="rating"
                         defaultValue={5}
-                        // value={5}
                     />
                     <label
                         htmlFor="rating-1"
@@ -91,7 +95,6 @@ export default function RateCard({
                         className="peer -ms-5 size-5 bg-transparent border-0 text-transparent cursor-pointer appearance-none checked:bg-none focus:bg-none focus:ring-0 focus:ring-offset-0"
                         name="rating"
                         defaultValue={4}
-                        // value={4}
                     />
                     <label
                         htmlFor="rating-2"
@@ -116,7 +119,6 @@ export default function RateCard({
                         className="peer -ms-5 size-5 bg-transparent border-0 text-transparent cursor-pointer appearance-none checked:bg-none focus:bg-none focus:ring-0 focus:ring-offset-0"
                         name="rating"
                         defaultValue={3}
-                        // value={3}
                     />
                     <label
                         htmlFor="rating-3"
@@ -141,7 +143,6 @@ export default function RateCard({
                         className="peer -ms-5 size-5 bg-transparent border-0 text-transparent cursor-pointer appearance-none checked:bg-none focus:bg-none focus:ring-0 focus:ring-offset-0"
                         name="rating"
                         defaultValue={2}
-                        // value={2}
                     />
                     <label
                         htmlFor="rating-4"
@@ -166,7 +167,6 @@ export default function RateCard({
                         className="peer -ms-5 size-5 bg-transparent border-0 text-transparent cursor-pointer appearance-none checked:bg-none focus:bg-none focus:ring-0 focus:ring-offset-0"
                         name="rating"
                         defaultValue={1}
-                        // value={1}
                     />
                     <label
                         htmlFor="rating-5"
