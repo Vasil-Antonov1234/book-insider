@@ -1,11 +1,14 @@
-# book-insider
+# 📚 book-insider
 ## Overview
-This is a **frond-end React web application** for book blog system, created for the purposes of React.js Softuni Course, Oct-Dec 2023.
+📌 This is a **frond-end React web application** for book blog system, created for the purposes of React.js Softuni Course, Oct-Dec 2023.
 
-## Build
+## Prerequisites
+ - Node.js
+ - A clone of the repo on your local machine
+
+## ⚙️ Setup
 To run the application:
- - Clone the repo on your local machine.
- - Go to **server** directory and run the following command in the terminal:
+ - Go to **server** directory and run the following commands in the terminal:
  ```
  node server.js
  ```
@@ -46,5 +49,7 @@ There are three users initialized on the server, which can be used for testing:
 
 ### The project is build with:
  - [React.js](https://react.dev/)
+ - [React Router](https://reactrouter.com/)
  - [SoftUni Practice Server](https://github.com/softuni-practice-server/softuni-practice-server)
- - [Tailwind CSS](https://tailwindcss.com/) - free recources from https://tailwindflex.com and https://uiverse.io
+ - [Tailwind CSS](https://tailwindcss.com/)
+ - Free recources from https://tailwindflex.com and https://uiverse.io
