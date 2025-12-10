@@ -20,15 +20,21 @@ export default function UserProfile() {
     const { data: comments, isPending: isPendingMyComments } = useFetch(`/data/comments?${query}`, []);
     const myComments = Object.values(comments);
 
+    const { data: allAvatars } = useFetch("/data/avatars", []);
+
+    const avatar = allAvatars.filter((x) => x._ownerId === user._id)
+
+    const hasAvatar = !!avatar.length;
+
     return (
         <section className="flex items-center justify-center">
             <div id="features" className="px-2 space-y-6 py-8 md:py-12 lg:py-24 mx-auto bg-[#fff7ed] w-290 h-170 overflow-y-auto">
                 <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
                     <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl font-bold">Profile</h2>
                     <p className="text-3xl">{user.email}</p>
-                    <img className="w-24 h-24" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5KIVAXW9AI0QGgkf0dbYPHrd0ankxzbhz1hcQN2NLq2YypDqiVrYowkJlt2Ky6p5uNzM&usqp=CAU" alt="avatar" />
+                    <img className="w-24 h-24" src={hasAvatar ? avatar[0]?.imageUrl : "/images/profile.jpg"} alt="avatar" />
                     <p className="italic">Member since {dateHandler(user._createdOn, true)}</p>
-                    <Link to={`/user/${user._id}/edit`}>Edit</Link>
+                    <Link to={`/user/${user._id}/edit`}>Edit Avatar</Link>
                 </div>
                 <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-[64rem] md:grid-cols-3">
 

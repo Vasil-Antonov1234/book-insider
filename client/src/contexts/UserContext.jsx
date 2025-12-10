@@ -15,6 +15,7 @@ const UserContext = createContext({
     registerHandler() { },
     loginHandler() { },
     logoutHandler() { },
+    editProfileHandler() { },
     isAuthenticated: false
 })
 
@@ -59,22 +60,56 @@ export function UserProvider({
         try {
             await request("/users/logout", "GET", null, { accessToken: user?.accessToken })
         } catch (error) {
-            
+
             if (error === "Invalid access token") {
                 return
             }
-            
+
             toast.error(error)
         } finally {
             setUser(null);
         }
     };
 
+    async function editProfileHandler(userData, avatar) {
+
+
+        // console.log(avatar[0])
+        // console.log(avatar[0]?._id)
+
+        if (avatar[0]) {
+
+            console.log("test")
+            try {
+                await request(`/data/avatars/${avatar[0]._id}`, "PATCH", userData, { accessToken: user?.accessToken })
+
+                navigate("/")
+
+                // /data/books/${bookId}`, "PATCH", body
+
+            } catch (error) {
+                toast.error(error);
+            }
+
+        } else {
+            try {
+                await request(`/data/avatars/`, "POST", userData, { accessToken: user?.accessToken });
+
+                navigate("/");
+            } catch (error) {
+                toast.error(error);
+            };
+        }
+
+
+    }
+
     const userContextValues = {
         user,
         registerHandler,
         loginHandler,
         logoutHandler,
+        editProfileHandler,
         isAuthenticated: !!user
     }
 
