@@ -17,15 +17,17 @@ export default function UserEdit() {
     const { formImputRegister, formHandler } = useForm(initialValues, onSubmit, "")
 
     async function onSubmit(formData) {
-
-        if (!formData) {
-            return toast.error("Email is required");
+        
+        const { imageUrl } = formData
+        
+        if (!imageUrl) {
+            return toast.error("Image url is required");
         };
 
         const allAvatars = await request(`/data/avatars`);
         const avatar = allAvatars.filter((x) => x._ownerId === userId);
        
-        editProfileHandler(formData, avatar);
+        editProfileHandler(imageUrl, avatar);
 
     };
 

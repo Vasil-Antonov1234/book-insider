@@ -38,8 +38,6 @@ export function UserProvider({
         } catch (error) {
             toast.error(error);
         };
-
-
     };
 
     async function loginHandler(userData) {
@@ -71,21 +69,14 @@ export function UserProvider({
         }
     };
 
-    async function editProfileHandler(userData, avatar) {
-
-
-        // console.log(avatar[0])
-        // console.log(avatar[0]?._id)
+    async function editProfileHandler(imageUrl, avatar) {
 
         if (avatar[0]) {
 
-            console.log("test")
             try {
-                await request(`/data/avatars/${avatar[0]._id}`, "PATCH", userData, { accessToken: user?.accessToken })
+                await request(`/data/avatars/${avatar[0]._id}`, "PATCH", {imageUrl: imageUrl}, { accessToken: user?.accessToken })
 
-                navigate("/")
-
-                // /data/books/${bookId}`, "PATCH", body
+                navigate("/user/profile")
 
             } catch (error) {
                 toast.error(error);
@@ -93,9 +84,9 @@ export function UserProvider({
 
         } else {
             try {
-                await request(`/data/avatars/`, "POST", userData, { accessToken: user?.accessToken });
+                await request(`/data/avatars/`, "POST", {imageUrl: imageUrl}, { accessToken: user?.accessToken });
 
-                navigate("/");
+                navigate("/user/profile");
             } catch (error) {
                 toast.error(error);
             };

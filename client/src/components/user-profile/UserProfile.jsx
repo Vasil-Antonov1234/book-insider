@@ -34,7 +34,7 @@ export default function UserProfile() {
                     <p className="text-3xl">{user.email}</p>
                     <img className="w-24 h-24" src={hasAvatar ? avatar[0]?.imageUrl : "/images/profile.jpg"} alt="avatar" />
                     <p className="italic">Member since {dateHandler(user._createdOn, true)}</p>
-                    <Link to={`/user/${user._id}/edit`}>Edit Avatar</Link>
+                    <Link className="font-bold text-red-900" to={`/user/${user._id}/edit`}>Edit Avatar</Link>
                 </div>
                 <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-[64rem] md:grid-cols-3">
 
