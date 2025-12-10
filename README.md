@@ -48,6 +48,7 @@ The authenticated users have access to the privet part and following functionali
    - **My reviews** with direct links to the books created from the user.
    - **My comments** containing comments and links to the related reviews.
    - **Rated books** shows every book rated from the user and direct links to each one.
+   - **Edit avatar** allows users to change their avatar.
 
 There are three users initialized on the server, which can be used for testing:
  - peter@abv.bg with password: 123456
