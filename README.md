@@ -6,23 +6,30 @@
  - Node.js
  - A clone of the repo on your local machine
 
-## ⚙️ Setup
-To run the application:
- - Go to **server** directory and run the following commands in the terminal:
- ```
- node server.js
- ```
- This will start [SoftUni Practice Server](https://github.com/softuni-practice-server/softuni-practice-server) on `http://localhost:3030`. 
- 
- Then go to **client** directory and run
+## Run
+The application is deployed to Firebase and is available on https://book-insider-465b8.firebaseapp.com/
+
+## ⚙️ Local mode setup
+To start the application locally, run the following commands in the terminal:
+ - In main folder run:
  ```
  npm install
  ```
- to install the necessary dependencies and
+ - Go to **functions** folder:
  ```
- npm run dev
+ cd functions
  ```
- to start the client on `http://localhost:5173/`
+ and run:
+ ```
+ npm install
+ ```
+ This will install the necessary dependencies.
+  
+  - To run the application:
+ ```
+ npm run client
+ ```
+ This will build and start the latest version on `http://localhost:4173/`
 
 ## Public part
 The public part is for all authenticated and non authenticated users. It gives you access to the following functionalities:

@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "server": "firebase emulators:start --only functions",
     "deploy:server": "firebase deploy --only functions",
-    "deploy:client": "npm run build && firebase deploy --only hosting"
+    "deploy:client": "npm run build && firebase deploy --only hosting",
+    "client": "npm run build && npm run preview"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.17",
