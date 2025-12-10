@@ -43,7 +43,7 @@ export default function Register() {
                         <input
                             {...formImputRegister("email")}
                             id="email"
-                            name="email"
+                            type="email"
                             className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                     </div>
